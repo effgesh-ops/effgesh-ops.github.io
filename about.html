@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<link rel="canonical" href="https://effgesh-ops.github.io/about.html">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f2ee">
+<meta name="description" content="ГЕШ СТОР: о сайте, персональных данных, ценах и товарных знаках.">
+<title>О сайте — ГЕШ СТОР</title>
+<link rel="icon" href="images/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="images/brand/favicon-120.png" sizes="120x120" type="image/png">
+<style>
+@font-face{font-family:Onest;src:url(fonts/Onest-cyrillic.woff2) format('woff2');font-weight:100 900;font-display:swap;
+  unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Onest;src:url(fonts/Onest-latin.woff2) format('woff2');font-weight:100 900;font-display:swap;
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Montserrat;src:url(fonts/Montserrat-var.woff) format('woff');font-weight:400 700;font-display:swap}
+:root{--milk:#f6f2ee;--ink:#1f1b24;--text:#4a4a4c;--deep:#2b1748;--violet:#7451d6;--lilac:#eae1f7;
+  --graphite:#6f6a73;--line:rgba(31,27,36,.12)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--milk);color:var(--text);font:400 16px/1.7 Onest,system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--violet)}
+.wrap{width:min(820px,calc(100% - 32px));margin:auto}
+nav{border-bottom:1px solid var(--line);background:rgba(246,242,238,.92);position:sticky;top:0;backdrop-filter:blur(16px)}
+.nav{height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{--h:24px;display:block;height:var(--h);width:calc(var(--h)*7.17);overflow:hidden}
+.logo img{display:block;height:var(--h);width:auto;max-width:none;margin:0}  /* новый логотип без полей — обрезать нечего */
+.back{font-size:14px;color:var(--graphite);text-decoration:none}
+.back:hover{color:var(--violet)}
+h1,h2{font-family:Montserrat,Onest,sans-serif;font-weight:500;color:var(--ink);
+  letter-spacing:-.03em;line-height:1.1;margin:0}
+h1{font-size:clamp(28px,6vw,46px);margin:56px 0 14px}
+section{padding:34px 0;border-top:1px solid var(--line)}
+section h2{font-size:clamp(19px,3.4vw,24px);margin-bottom:14px}
+p{margin:0 0 10px}
+footer{border-top:1px solid var(--line);padding:30px 0 50px;font-size:13px;color:var(--graphite)}
+</style>
+</head>
+<body>
+<nav><div class="wrap nav">
+  <a class="logo" href="index.html" aria-label="ГЕШ СТОР, на главную"><img src="images/brand/logo.svg" alt="ГЕШ СТОР"></a>
+  <a class="back" href="index.html">← На главную</a>
+</div></nav>
+
+<main class="wrap">
+  <h1>О сайте</h1>
+  <section>
+    <h2>Что это за сайт</h2>
+    <p>Сайт информационный: знакомит с тем, как ГЕШ СТОР подбирает технику, и показывает примеры прошлых подборов.
+      На сайте ничего не оформляется и не оплачивается — всё общение в мессенджерах.</p>
+  </section>
+  <section>
+    <h2>Персональные данные и cookie</h2>
+    <p>Сайт не собирает и не хранит персональные данные, не ставит cookie и не подключает счётчики посещаемости.
+      Шрифты и картинки загружаются с того же адреса, что и сайт.</p>
+    <p>Связь — только через мессенджеры по ссылке. Конструктор запроса лишь копирует текст в вашем браузере
+      и предлагает выбрать мессенджер — Telegram, ВКонтакте или Max; отправлять ли сообщение, решаете вы. В мессенджерах действуют их правила.</p>
+  </section>
+  <section>
+    <h2>Цены</h2>
+    <p>Цены в кейсах — пример прошлых подборов на дату кейса. Цены в разделе «Есть сейчас» — на указанную дату;
+      актуальные условия уточняем в переписке. Это не публичная оферта (ст. 437 ГК РФ).</p>
+  </section>
+  <section>
+    <h2>Товарные знаки</h2>
+    <p>Apple, iPhone, iPad, Huawei и другие товарные знаки принадлежат их правообладателям и упоминаются только
+      для описания техники. Фото товаров — изображения производителей.</p>
+  </section>
+</main>
+
+<footer><div class="wrap">© <span id="y">2026</span> ГЕШ СТОР · <a href="index.html">На главную</a></div></footer>
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<script src="images/brand/logo-live.js"></script>
+</body>
+</html>

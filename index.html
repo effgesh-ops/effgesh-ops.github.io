@@ -1,0 +1,1215 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<link rel="canonical" href="https://effgesh-ops.github.io/">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f2ee">
+<meta name="description" content="ГЕШ СТОР — персональный подбор техники. Находим модель, сравниваем цены у поставщиков, проверяем и привозим. Ижевск, Казань, доставка по всей России.">
+<title>Подбор техники дешевле магазина в Ижевске и Казани — ГЕШ СТОР</title>
+<link rel="icon" href="images/brand/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="ГЕШ СТОР — подбор техники под ключ">
+<meta property="og:description" content="Найдём дешевле магазина, с чеком и гарантией. Ижевск, Казань, доставка по всей России.">
+<meta property="og:image" content="https://effgesh-ops.github.io/images/brand/og.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="images/brand/favicon-120.png" sizes="120x120" type="image/png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"ГЕШ СТОР",
+ "description":"Персональный подбор техники: находим модель дешевле магазина, оформляем с чеком и гарантией, привозим.",
+ "areaServed":["Казань","Ижевск","Россия"],
+ "sameAs":["https://t.me/geshstore","https://vk.com/evgnybrv"]}
+</script>
+<!-- Шрифты лежат рядом, в fonts/: страница не обращается к сторонним серверам,
+     поэтому IP посетителя никуда, кроме нашего хостинга, не уходит -->
+<style>
+@font-face{font-family:Onest;src:url(fonts/Onest-cyrillic.woff2) format('woff2');font-weight:100 900;font-display:swap;
+  unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Onest;src:url(fonts/Onest-latin.woff2) format('woff2');font-weight:100 900;font-display:swap;
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Montserrat;src:url(fonts/Montserrat-var.woff) format('woff');font-weight:400 700;font-display:swap}
+/* ===== Quiet Violet — визуальная система ГЕШ ===== */
+:root{
+  --milk:#f6f2ee; --ink:#1f1b24; --text:#4a4a4c; --deep:#2b1748; --violet:#7451d6;
+  --electric:#9a6bff; --lilac:#eae1f7; --graphite:#6f6a73; --green:#a8cfaf;
+  --grad:linear-gradient(120deg,#6a4bd0,#b9a2f5);
+  --line:rgba(31,27,36,.12);
+  /* поменять шрифт заголовков и логотипа = поменять одну строку ниже */
+  --display:Montserrat, Onest, system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;position:relative;background:var(--milk);color:var(--text);
+  font-family:Onest,system-ui,-apple-system,sans-serif;font-weight:400;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font:inherit}
+h1,h2,h3{margin:0;font-family:var(--display);font-weight:500;letter-spacing:-.03em;line-height:1.06;color:var(--ink)}
+.flow h2,.req h2{color:#fff}
+.wrap{width:min(1180px,calc(100% - 40px));margin:auto}
+main{position:relative;z-index:1}
+section{padding:140px 0}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);font-weight:600}
+.head{display:flex;justify-content:space-between;align-items:end;gap:34px;margin-bottom:50px}
+.head h2{font-size:clamp(30px,3.8vw,52px)}
+.head p{max-width:400px;color:var(--graphite);line-height:1.6;margin:0}
+.v{color:var(--violet);font-weight:700}
+
+/* ===== МАРШРУТНАЯ ЛИНИЯ — сквозь всю страницу, вторым планом ===== */
+/* overflow:hidden обязателен — иначе узлы линии, стоящие абсолютно,
+   сами растягивают страницу и высота от пересчёта к пересчёту растёт */
+.route{position:absolute;left:0;top:0;width:100%;z-index:0;pointer-events:none;overflow:hidden}
+.route svg{width:100%;height:100%;display:block}
+.route path{fill:none;stroke:var(--violet);stroke-width:2;opacity:.6;
+  vector-effect:non-scaling-stroke;stroke-linecap:round}
+.route path.ghost{opacity:.12}
+.rdot{position:absolute;width:13px;height:13px;margin:-6.5px 0 0 -6.5px;border-radius:50%;
+  background:var(--violet);
+  opacity:0;transition:opacity .5s}
+.rdot.on{opacity:1}
+.rmark{position:absolute;margin:-5px 0 0 -5px;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.rmark i{width:12px;height:12px;border-radius:50%;background:var(--milk);
+  border:2px solid var(--violet);opacity:.6;transition:background .4s,opacity .4s,transform .4s}
+.rmark span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--graphite);
+  opacity:.55;transition:opacity .4s,color .4s}
+.rmark.passed i{background:var(--violet);opacity:1;transform:scale(1.15)}
+.rmark.passed span{opacity:1;color:var(--deep)}
+.rmark.right{transform:translateX(-100%);margin-left:5px;flex-direction:row-reverse}
+
+/* ===== ЛОГОТИП — один файл: images/brand/logo.svg =====
+   Чтобы сменить логотип, положите новый svg с тем же именем.
+   У файлов из brand/logo/v5/final вокруг знака пустое поле (~10% по бокам,
+   ~23% сверху и снизу) — рамка .logo его обрезает. Если у нового файла
+   полей нет, поменяйте --crop на 0. */
+.logo{--h:24px;--crop:0;display:block;flex:0 0 auto;height:var(--h);width:calc(var(--h)*7.17);overflow:hidden}
+.logo img{display:block;height:calc(var(--h)*(1 + .874*var(--crop)));width:auto;max-width:none;
+  margin:calc(var(--h)*-.4425*var(--crop)) 0 0 calc(var(--h)*-.499*var(--crop))}
+.foot .foot-logo{--h:30px;padding:0}
+
+/* ===== ШАПКА ===== */
+nav{position:sticky;top:0;z-index:40;background:rgba(246,242,238,.9);
+  backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+.nav{height:60px;display:flex;align-items:center;gap:28px}
+.navlinks{display:flex;gap:26px;margin-left:auto;font-size:14px;color:var(--graphite)}
+.navlinks a{position:relative;padding-bottom:4px;transition:color .2s}
+.navlinks a:after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--violet);transition:width .35s}
+.navlinks a:hover{color:var(--ink)}
+.navlinks a:hover:after{width:100%}
+.tg{background:transparent;cursor:pointer;font-family:inherit;margin-left:28px;font-size:14px;font-weight:500;color:var(--deep);padding:9px 16px;
+  border:1px solid var(--line);border-radius:999px;transition:border-color .25s,color .25s;white-space:nowrap}
+.tg:hover{border-color:var(--violet);color:var(--violet)}
+@media (max-width:420px){.tg .long{display:none}.tg{padding:9px 14px}}
+
+/* ===== кнопки ===== */
+.pill{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;
+  border-radius:999px;background:var(--ink);color:#fff;border:0;cursor:pointer;transition:background .3s,color .3s}
+.pill:hover{background:var(--violet)}
+.pill.light{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.pill.light:hover{background:var(--lilac);color:var(--deep)}
+
+/* ===== HERO ===== */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;padding:18px 0 72px}
+.hero h1{font-size:clamp(40px,5vw,72px);margin:22px 0 26px}
+.lead{font-size:20px;line-height:1.55;color:var(--graphite);max-width:520px;margin:0}
+.actions{display:flex;gap:12px;margin-top:38px;flex-wrap:wrap}
+.facts{display:flex;gap:34px;margin-top:52px;font-size:13px;color:var(--graphite)}
+.facts b{display:block;font-size:22px;font-weight:400;color:var(--deep);letter-spacing:-.03em;margin-bottom:3px}
+.hero-frame{position:relative;justify-self:center;width:min(100%,392px)}
+/* в кадры сторис вшит старый логотип сверху — показываем кадр без верхних 10% */
+.hero-frame img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;
+  border-radius:26px;box-shadow:0 40px 80px -30px rgba(43,23,72,.45)}
+.hero-ask{position:absolute;top:20px;left:-30px;max-width:78%;background:#fff;border-radius:20px 20px 20px 6px;
+  padding:14px 18px;font-size:16px;line-height:1.4;color:var(--ink);box-shadow:0 24px 44px -22px rgba(43,23,72,.35)}
+.hero-ask small,.hero-tag small{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--graphite);margin-bottom:6px}
+.hero-tag{position:absolute;right:-26px;bottom:34px;border-radius:20px 20px 6px 20px!important;background:#fff;border:1px solid var(--line);
+  border-radius:20px;padding:16px 20px;box-shadow:0 24px 44px -22px rgba(43,23,72,.35)}
+.hero-tag small{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--graphite);margin-bottom:6px}
+.hero-tag b{font-size:22px;font-weight:500;letter-spacing:-.03em;color:var(--deep)}
+.hero-tag s{display:block;font-size:13px;color:var(--graphite);font-weight:300}
+.hero-tag em{display:inline-block;margin-top:8px;font-style:normal;font-size:13px;font-weight:600;color:#2f7a45;background:#e2f0e6;border-radius:999px;padding:3px 10px}
+
+/* ===== КЕЙСЫ ===== */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:34px}
+@media (max-width:600px){.tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:-20px;padding-right:20px}.tabs::-webkit-scrollbar{display:none}.tab{flex:0 0 auto}.qgroup{margin-bottom:22px}}
+.tab{border:1px solid var(--line);background:transparent;color:var(--graphite);
+  padding:12px 20px;border-radius:999px;cursor:pointer;font-size:14px;transition:.3s}
+.tab:hover{color:var(--ink);border-color:rgba(116,81,214,.4)}
+.tab.on{background:var(--deep);color:#fff;border-color:var(--deep)}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{position:relative;overflow:hidden;border-radius:24px;aspect-ratio:1/1.08;background:#eee7e1}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.card:hover img{transform:scale(1.04)}
+.card:after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(246,242,238,0) 48%,rgba(246,242,238,.92) 78%)}
+.card div{position:absolute;left:18px;right:16px;bottom:16px;z-index:2}
+.card h3{font-size:clamp(17px,1.6vw,22px)}
+.card p{margin:5px 0 0;font-size:13px;line-height:1.35;color:var(--text)}
+@media (max-width:760px){.cards{grid-template-columns:1fr 1fr;gap:10px}.card{border-radius:20px}.card div{left:12px;right:10px;bottom:11px}.card h3{font-size:15.5px}.card p{font-size:11.5px;margin-top:3px}}
+.perks{list-style:none;margin:0;padding:22px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.perks li{display:grid;grid-template-columns:52px 1fr;column-gap:14px;align-items:center}
+.perks img{grid-row:span 2;width:52px;height:52px;border-radius:50%;object-fit:cover}
+.perks b{font:500 16px/1.2 var(--display);color:var(--ink);letter-spacing:-.02em}
+.perks span{font-size:13px;line-height:1.35;color:var(--graphite)}
+@media (max-width:900px){.perks{grid-template-columns:1fr 1fr;gap:16px 12px}}
+@media (max-width:600px){.perks{padding:16px 0}.perks li{grid-template-columns:40px 1fr;column-gap:10px}.perks img{width:40px;height:40px}.perks b{font-size:14px}.perks span{font-size:11.5px}}
+.case{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center}
+.fresh[hidden]{display:none}
+.fresh{display:inline-block;margin:0 10px 8px 0;padding:4px 10px;border-radius:999px;background:var(--violet);color:#fff;font-size:12px;font-weight:600;letter-spacing:.02em}
+.tab .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--violet);margin-left:7px;vertical-align:middle}
+.case-q{font-family:var(--display);font-size:clamp(22px,2.3vw,30px);line-height:1.32;letter-spacing:-.025em;font-weight:400;margin:16px 0 0}
+.case-q:before{content:"«"}.case-q:after{content:"»"}
+.case-lead{color:var(--graphite);line-height:1.65;margin:24px 0 0;font-size:16px}
+.money{display:flex;flex-wrap:wrap;align-items:flex-end;gap:14px 40px;margin-top:38px;padding-top:32px;border-top:1px solid var(--line)}
+.money span{display:block;font-size:12px;color:var(--graphite);margin-bottom:8px}
+.money b{font-size:26px;font-weight:400;letter-spacing:-.04em}
+.money .old b{color:var(--graphite);text-decoration:line-through;text-decoration-thickness:1px}
+.money .new b{color:var(--violet)}
+.faq-rest{display:grid;gap:10px}.faq-rest[hidden]{display:none}
+.faq-more{justify-self:start;background:none;border:0;color:var(--violet);font-size:15px;font-weight:500;cursor:pointer;padding:8px 4px}
+.case-more{margin-top:22px;border-top:1px solid var(--line);padding-top:14px}
+.case-more summary{cursor:pointer;list-style:none;font-size:14px;color:var(--violet);font-weight:500}
+.case-more summary::-webkit-details-marker{display:none}
+.case-more summary:after{content:" ▾"}.case-more[open] summary:after{content:" ▴"}
+.case-more .case-lead{margin-top:12px}
+.money .save{align-self:end;font-size:14px;font-weight:600;color:#2f7a45;background:#e2f0e6;border-radius:999px;padding:6px 12px}
+.all-cases{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+.chip{font-size:13px;color:var(--deep);background:var(--lilac);padding:9px 15px;border-radius:999px}
+.chip.green{background:var(--green);color:var(--ink)}
+.strip{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 20px}
+.strip::-webkit-scrollbar{height:5px}
+.strip::-webkit-scrollbar-thumb{background:rgba(116,81,214,.3);border-radius:99px}
+.strip figure{margin:0;flex:0 0 auto;width:232px;scroll-snap-align:start}
+.strip img{width:100%;aspect-ratio:900/1440;object-fit:cover;object-position:50% 100%;border-radius:20px;
+  border:1px solid var(--line);background:var(--lilac);box-shadow:0 26px 50px -30px rgba(43,23,72,.5)}
+.strip figcaption{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--graphite);margin-top:12px}
+.swap{animation:swap .5s ease}
+@keyframes swap{from{opacity:0}to{opacity:1}}
+
+/* ===== ЕСТЬ СЕЙЧАС: карточки с фото производителя ===== */
+.goods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.good{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column}
+.good img{width:100%;aspect-ratio:1;object-fit:contain;background:#fff;display:block}
+.good .ph{position:relative;background:#fff}
+.good .ph img{opacity:0;transition:opacity .5s}
+.good .ph.ok img{opacity:1}
+.good .ld{position:absolute;left:50%;top:50%;width:36px;height:36px;margin:-18px 0 0 -18px;transition:opacity .3s}
+.good .ld .lp{animation:ldSpin 1.1s cubic-bezier(.65,0,.25,1) infinite}
+.good .ph.ok .ld{opacity:0}
+@keyframes ldSpin{to{transform:rotate(180deg)}}
+@media(prefers-reduced-motion:reduce){.good .ld .lp{animation:none}}
+.good .gb{padding:14px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.good .cat{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--graphite)}
+.good .nm{font-size:16px;line-height:1.3;letter-spacing:-.01em}
+.good .pr{font-family:var(--display);font-size:24px;font-weight:600;color:var(--deep);letter-spacing:-.03em;margin-top:auto}
+.good .pr small{font-size:14px;font-weight:500;color:var(--graphite);margin-right:4px}
+.good .ga{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.good .want{flex:1;border:0;border-radius:999px;background:var(--ink);color:#fff;padding:11px 14px;font:500 14px Onest,system-ui,sans-serif;cursor:pointer}
+.good .want:hover{background:var(--violet)}
+.good .av{font-size:13px;color:var(--graphite);text-decoration:underline;text-underline-offset:3px}
+.good.ask{background:var(--ink);color:#fff;border-color:transparent;justify-content:center;padding:26px}
+.good.ask h3{font-family:var(--display);font-size:24px;line-height:1.15;margin:0 0 10px;color:#fff}
+.good.ask p{color:#cfc6dc;margin:0 0 18px;font-size:15px}
+.good.ask a{align-self:flex-start;background:#fff;color:var(--ink);border-radius:999px;padding:11px 18px;font-weight:500}
+.good{cursor:pointer;transition:transform .25s,box-shadow .25s}
+.good:hover{transform:translateY(-3px);box-shadow:0 24px 44px -26px rgba(43,23,72,.35)}
+.good.ask{cursor:default}.good.ask:hover{transform:none;box-shadow:none}
+.live{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--deep);background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+.live.old:before{background:#c9c2cf;box-shadow:none}
+.live:before{content:"";width:8px;height:8px;border-radius:50%;background:#3aa35b;box-shadow:0 0 0 4px rgba(58,163,91,.15)}
+.pd-box{max-height:92vh;overflow:auto}
+.pd-box img{width:100%;max-height:260px;object-fit:contain;margin:4px 0 14px}
+.pd-box .cat{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--graphite)}
+.pd-box h3{margin:6px 0 6px}
+.pd-pr{display:block;font-family:var(--display);font-size:28px;font-weight:600;color:var(--deep);letter-spacing:-.03em}
+.pd-list{list-style:none;padding:0;margin:16px 0 18px;display:grid;gap:9px;font-size:14.5px;color:var(--text)}
+.pd-list li{padding-left:26px;position:relative}
+.pd-list li:before{content:"✓";position:absolute;left:0;color:var(--violet);font-weight:700}
+.pd-list a{color:var(--violet)}
+.pd-go{width:100%}
+.pd-note{font-size:12.5px;color:var(--graphite);margin:10px 0 0;text-align:center}
+@media (max-width:600px){
+  .goods{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-right:-20px;padding-right:20px;scrollbar-width:none}
+  .goods::-webkit-scrollbar{display:none}
+  .good{flex:0 0 64%;scroll-snap-align:start}
+  .good.ask{flex-basis:64%}
+}
+.deals-note{margin:18px 4px 0;font-size:13px;color:var(--graphite)}
+.copied-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;
+  padding:12px 18px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .3s;z-index:50}
+.copied-toast.on{opacity:1}
+/* на телефоне кнопка связи всегда под пальцем: после первого экрана и до подвала */
+.float-tg{display:none}
+@media (max-width:760px){
+  .float-tg{border:0;cursor:pointer;font-family:inherit;display:block;position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom, 0px));z-index:40;
+    background:var(--violet);color:#fff;border-radius:999px;padding:13px 20px;font-weight:500;font-size:15px;
+    box-shadow:0 12px 30px -10px rgba(43,23,72,.55);opacity:0;transform:translateY(12px);pointer-events:none;
+    transition:opacity .3s,transform .3s}
+  .float-tg.on{opacity:1;transform:none;pointer-events:auto}
+  .copied-toast{bottom:84px}
+}
+
+/* ===== ИНТЕРАКТИВ: маршрут заказа ===== */
+.flow{background:var(--ink);color:#fff;border-radius:40px;padding:56px;overflow:hidden;position:relative}
+.flow h2{font-size:clamp(32px,3.6vw,50px);margin-bottom:10px}
+.flow .sub{color:#bdb4c5;margin:0 0 42px;line-height:1.6;max-width:460px}
+.flow-grid{display:grid;grid-template-columns:1fr 300px;gap:56px;align-items:start}
+@media (min-width:1021px){.phone-col{position:sticky;top:96px}}
+.nodes{position:relative;padding-left:26px}
+.nodes:before{content:"";position:absolute;left:5px;top:12px;bottom:12px;width:1px;background:rgba(255,255,255,.16)}
+.nodes i.fill{position:absolute;left:5px;top:12px;width:1px;background:var(--electric);
+  transition:height .7s cubic-bezier(.3,.7,.3,1)}
+.node{display:block;width:100%;text-align:left;background:none;border:0;color:#8e8698;cursor:pointer;
+  padding:15px 0;transition:color .3s;position:relative}
+.node:before{content:"";position:absolute;left:-26px;top:50%;width:11px;height:11px;margin-top:-5.5px;
+  border-radius:50%;background:var(--ink);border:1.5px solid rgba(255,255,255,.25);transition:.35s}
+.node.on{color:#fff}
+.node.on:before{border-color:var(--electric);background:var(--electric)}
+.node.done:before{border-color:var(--electric);background:var(--electric)}
+.node b{font-weight:500;font-size:17px;letter-spacing:-.01em}
+.node small{display:block;font-size:13px;color:#8e8698;margin-top:5px;line-height:1.5}
+.node.on small{color:#bdb4c5}
+.phone{background:#0e0d11;border:1px solid rgba(255,255,255,.14);border-radius:34px;padding:18px 16px 22px;
+  box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
+.phone .bar{display:flex;align-items:center;gap:9px;padding:0 8px 14px;border-bottom:1px solid rgba(255,255,255,.09)}
+.phone .ava{width:26px;height:26px;border-radius:50%;background:var(--violet)}
+.phone .bar b{font-size:13px;font-weight:500}
+.phone .bar small{display:block;font-size:10.5px;color:#7d7488}
+.chatlog{min-height:250px;display:flex;flex-direction:column;gap:9px;padding:16px 6px 0}
+.bub{max-width:82%;padding:11px 14px;border-radius:16px;font-size:13.5px;line-height:1.45;
+  animation:bub .45s cubic-bezier(.2,.8,.3,1) both}
+.bub.me{align-self:flex-end;background:var(--violet);color:#fff;border-bottom-right-radius:5px}
+.bub.them{align-self:flex-start;background:#1d1b21;color:#e6e2ea;border-bottom-left-radius:5px}
+.bub.sys{align-self:center;background:transparent;color:#7d7488;font-size:11.5px;letter-spacing:.1em;
+  text-transform:uppercase;padding:4px}
+.bub b{font-weight:500;color:#fff}
+@keyframes bub{from{opacity:0;transform:translateY(9px) scale(.97)}to{opacity:1;transform:none}}
+
+/* ===== КОНСТРУКТОР ЗАПРОСА (живёт внутри блока заказа) ===== */
+.qbuild{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:none}
+.qbuild.on{display:block;animation:swap .45s ease}
+.qgroup{margin-bottom:16px;display:none}
+.qgroup.cur{display:block;animation:swap .35s ease}
+.qgroup>span{font-size:22px!important;letter-spacing:-.02em!important;text-transform:none!important;color:#fff!important;font-family:var(--display);margin-bottom:14px!important}
+.qgroup .opt{font-size:15px;padding:11px 16px}
+.qtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8e8698}
+.qtop button{background:none;border:0;color:#bdb4c5;cursor:pointer;font-size:13px;letter-spacing:0;text-transform:none}
+.qdone{margin-top:14px;background:var(--violet)}
+@media (min-width:1021px){.qdone{display:none}}
+.qgroup>span{display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:#8e8698;margin-bottom:10px}
+.opts{display:flex;gap:7px;flex-wrap:wrap}
+.opt{border:1px solid rgba(255,255,255,.18);background:transparent;border-radius:999px;
+  padding:9px 15px;cursor:pointer;font-size:13.5px;color:#bdb4c5;transition:.25s}
+.opt:hover{border-color:var(--electric);color:#fff}
+.opt.on{background:var(--electric);border-color:var(--electric);color:#fff;font-weight:500}
+#qfree{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+  border-radius:14px;padding:13px 16px;color:#fff;font:inherit;font-size:16px;margin-top:4px}
+#qfree::placeholder{color:#7d7488}
+#qfree:focus{outline:0;border-color:var(--electric)}
+.phone-col{display:flex;flex-direction:column}
+.send{margin-top:18px;background:#fff;color:var(--ink);display:none}
+.send.on{display:inline-flex}
+.send:hover{background:var(--electric);color:#fff}
+.copied{font-size:12.5px;color:var(--green);text-align:center;margin:10px 0 0;height:16px;
+  opacity:0;transition:opacity .3s}
+.copied.on{opacity:1}
+
+/* ===== ОТЗЫВЫ ===== */
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rev{background:#fff;border:1px solid var(--line);border-radius:26px;padding:30px;display:flex;flex-direction:column}
+.rev p{font-size:16px;line-height:1.65;margin:0 0 26px}
+.rev .who{display:flex;align-items:center;gap:12px;margin-top:auto}
+.rev .ava{width:40px;height:40px;border-radius:50%;background:var(--lilac);color:var(--deep);
+  display:grid;place-items:center;font-weight:500}
+.rev .who b{display:block;font-weight:500;font-size:15px}
+.rev .who span{font-size:13px;color:var(--graphite)}
+
+/* ===== КОРОТКИЙ ВХОД В ДИАЛОГ ===== */
+.req{background:var(--deep);color:#fff;border-radius:40px;padding:64px;
+  display:grid;grid-template-columns:1.25fr auto;align-items:center;gap:54px;position:relative;overflow:hidden}
+.req>*{position:relative;z-index:2}
+.req h2{font-size:clamp(32px,3.6vw,48px)}
+.req .sub{color:#bdb4c5;margin:20px 0 0;line-height:1.65;max-width:590px}
+.req .actions{margin:0;justify-content:flex-end}
+.req .pill{background:#fff;color:var(--ink)}
+.req .pill:hover{background:var(--electric);color:#fff}
+.req .pill.light{background:transparent;color:#fff;border-color:rgba(255,255,255,.28)}
+
+/* ===== СОЦСЕТИ И ПОДВАЛ ===== */
+.social{display:flex;align-items:center;justify-content:space-between;gap:34px;flex-wrap:wrap}
+.social h2{font-size:clamp(28px,3.2vw,44px)}
+footer{position:relative;z-index:1;background:var(--milk);border-top:1px solid var(--line);padding:56px 0 64px;color:var(--graphite);font-size:13.5px;line-height:1.7}
+.foot{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px}
+.foot h4{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
+  font-weight:600;margin:0 0 14px}
+.foot a{display:block;padding:3px 0;transition:color .2s}
+.foot a:hover{color:var(--violet)}
+.legal{margin-top:44px;padding-top:26px;border-top:1px solid var(--line);
+  display:grid;gap:12px;font-size:12.5px;line-height:1.6}
+.legal p{margin:0;max-width:760px}
+
+
+/* ===== ОБЕЩАНИЯ: плитки в стиле соцсетей (фото + заголовок сверху) ===== */
+.promise{padding:40px 0 20px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tile{position:relative;overflow:hidden;border-radius:26px;aspect-ratio:4/5;background:var(--milk);
+  box-shadow:0 30px 60px -40px rgba(43,23,72,.45)}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tile img.owner{top:36%;height:64%;object-position:50% 18%;-webkit-mask-image:linear-gradient(transparent,#000 22%);mask-image:linear-gradient(transparent,#000 22%)}
+.tile:after{content:"";position:absolute;inset:0;background:linear-gradient(var(--milk) 24%,rgba(246,242,238,.85) 34%,rgba(246,242,238,0) 58%)}
+.rev-photo{grid-column:span 2;position:relative;overflow:hidden;border-radius:26px;min-height:320px;background:var(--milk)}
+.rev-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:80% 45%}
+.rev-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--milk) 22%,rgba(246,242,238,0) 58%)}
+.rev-photo div{position:absolute;left:30px;top:30px;z-index:2}
+.rev-photo h3{font-size:clamp(24px,2.6vw,36px)}
+.tile div{position:absolute;left:22px;right:18px;top:22px;z-index:2}
+.tile h3{font-size:clamp(19px,1.7vw,24px);line-height:1.08}
+.tile p{margin:10px 0 0;font-size:13.5px;line-height:1.5;color:var(--text);max-width:230px}
+.qnote{font-size:12px;line-height:1.5;color:#8e8698;margin:10px 2px 0}
+.money-note{font-size:12px;color:var(--graphite);margin:14px 0 0;line-height:1.5}
+
+/* ===== появление ===== */
+.rise{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
+.rise.in{opacity:1;transform:none}
+
+/* ===== «Куда написать»: один выбор для всех кнопок связи ===== */
+.sheet{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;
+  background:rgba(20,18,23,.42);opacity:0;pointer-events:none;transition:opacity .25s}
+.sheet{visibility:hidden}.sheet.on{opacity:1;pointer-events:auto;visibility:visible}
+.sheet-box{background:#fff;border-radius:28px;padding:26px;width:min(92vw,400px);box-shadow:0 30px 80px -30px rgba(43,23,72,.5);
+  transform:translateY(12px);transition:transform .25s}
+.sheet.on .sheet-box{transform:none}
+.sheet-box h3{font-family:var(--display);font-size:22px;margin:0 0 6px}
+.sheet-box .hint{font-size:13.5px;color:var(--graphite);margin:0 0 16px;min-height:1em}
+.ch{display:flex;align-items:center;gap:14px;width:100%;box-sizing:border-box;margin-left:0;border:1px solid var(--line);background:#fff;border-radius:18px;
+  padding:14px 16px;margin-top:10px;cursor:pointer;font:500 16px Onest,system-ui,sans-serif;color:var(--ink);text-align:left;text-decoration:none}
+.ch:hover{border-color:var(--violet)}
+.ch i{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;color:#fff;font:700 15px var(--display);font-style:normal;flex:0 0 36px}
+.ch small{display:block;font-size:12.5px;color:var(--graphite);font-weight:400}
+.ch.c-tg i{background:#2AABEE}.ch.c-vk i{background:#0077FF}.ch.c-max i{background:linear-gradient(135deg,#7451D6,#3F7BFF)}
+.ch.off{opacity:.5;cursor:default}.ch.off:hover{border-color:var(--line)}
+.sheet-x{float:right;border:0;background:none;font-size:26px;line-height:1;color:var(--graphite);cursor:pointer;margin:-6px -4px 0 0}
+@media (max-width:600px){.sheet{align-items:flex-end}.sheet-box{width:100%;border-radius:28px 28px 0 0;padding:22px 20px calc(22px + env(safe-area-inset-bottom,0px))}}
+
+/* ===== Узнать цену по ссылке ===== */
+.check{background:#fff;border:1px solid var(--line);border-radius:26px;padding:22px 24px;display:grid;
+  grid-template-columns:1fr auto;gap:12px 16px;align-items:center}
+.check b{grid-column:1/-1;font-family:var(--display);font-size:19px;font-weight:600;letter-spacing:-.02em}
+.check b span{color:var(--violet)}
+.check input{border:1px solid var(--line);border-radius:999px;padding:14px 18px;font:16px Onest,system-ui,sans-serif;min-width:0;background:var(--milk)}
+.check input:focus{outline:2px solid rgba(116,81,214,.35);border-color:var(--violet)}
+.check button{border:0;border-radius:999px;background:var(--ink);color:#fff;padding:14px 22px;font:500 15px Onest,system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+.check button:hover{background:var(--violet)}
+.check small{grid-column:1/-1;font-size:12.5px;color:var(--graphite)}
+@media (max-width:600px){.check{grid-template-columns:1fr;padding:18px}.check b{font-size:17px}}
+
+/* ===== Отзывы: лента, которую листают пальцем ===== */
+.rv-row{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px;scrollbar-width:none}
+.rv-row::-webkit-scrollbar{display:none}
+.rv{flex:0 0 min(78vw,320px);scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:24px;
+  padding:22px;display:flex;flex-direction:column;gap:14px}
+.rv p{margin:0;font-size:15.5px;line-height:1.6}
+.rv .src{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--violet)}
+.rv .who{margin-top:auto;display:flex;align-items:center;gap:10px}
+.rv .who i{width:34px;height:34px;border-radius:50%;background:var(--lilac);color:var(--deep);display:grid;place-items:center;font-style:normal;font-weight:600}
+.rv .who b{display:block;font-weight:500;font-size:14px}.rv .who span{font-size:12.5px;color:var(--graphite)}
+.rv.media{padding:0;overflow:hidden;cursor:zoom-in;position:relative;background:var(--milk)}
+.rv.media img,.rv.media video{width:100%;height:100%;min-height:360px;max-height:460px;object-fit:cover;display:block}
+.rv.media .src{position:absolute;left:14px;top:14px;background:rgba(255,255,255,.92);padding:4px 10px;border-radius:999px}
+.rv-row.few .rv{flex-basis:min(100%,720px)}.rv-row.few .rv p{font-size:clamp(17px,2vw,22px);line-height:1.5}
+.lb-x{position:absolute;right:18px;top:14px;border:0;background:none;color:#fff;font-size:34px;cursor:pointer}
+.rv-more{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.lb{position:fixed;inset:0;z-index:70;background:rgba(20,18,23,.9);display:none;align-items:center;justify-content:center;padding:20px}
+.lb.on{display:flex}.lb img,.lb video{max-width:100%;max-height:100%;border-radius:14px}
+
+/* ===== Частые вопросы ===== */
+.faq{display:grid;gap:10px;max-width:760px}
+@media (min-width:1021px){#faq .wrap{display:grid;grid-template-columns:1fr 1.6fr;gap:56px;align-items:start}#faq .head{margin:0}}
+.faq .ask-proof{margin:0 0 18px;border:1px solid var(--violet);color:var(--violet);background:none;border-radius:999px;padding:10px 16px;font:500 14px Onest,system-ui,sans-serif;cursor:pointer}
+.faq .ask-proof:hover{background:var(--violet);color:#fff}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:20px;padding:0 22px}
+.faq summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:500;font-size:16px;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";color:var(--violet);font-size:22px;line-height:1}
+.faq details[open] summary:after{content:"–"}
+.faq p{margin:0 0 18px;color:var(--graphite);font-size:15px;line-height:1.6}
+
+/* ===== адаптив ===== */
+@media(max-width:1440px){.rmark span{display:none}}
+@media(max-width:1020px){
+  .phone-col{display:none}
+  .node small{display:none}
+  .node{padding-top:9px;padding-bottom:9px}
+  .navlinks{display:none}.tg{margin-left:auto}
+  .hero{grid-template-columns:1fr;gap:48px;padding-top:56px}
+  .hero-frame{justify-self:start;max-width:340px}.hero-tag{left:auto;right:-14px}
+  .case{grid-template-columns:1fr;gap:36px}
+  .revs{grid-template-columns:1fr 1fr}
+  .tiles{grid-template-columns:1fr 1fr}
+  .flow-grid{grid-template-columns:1fr;gap:40px}
+  .req{grid-template-columns:1fr;gap:40px;padding:44px}
+  .foot{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .wrap{width:calc(100% - 40px)}
+  section{padding:96px 0}
+  .nav{height:64px}.logo{--h:24px}
+  .pill{min-height:46px;padding:0 18px;font-size:14px}
+  /* первый экран на телефоне: плотный и ровный, без «колбасы» */
+  .hero{gap:26px;padding:26px 0 20px}
+  .hero .eyebrow{font-size:10.5px;letter-spacing:.12em}
+  .hero h1{font-size:clamp(34px,10.5vw,46px);margin:12px 0 14px}.lead{font-size:16px;line-height:1.5}
+  .hero .actions{margin-top:22px;flex-wrap:nowrap;gap:8px}
+  .hero .actions .pill{flex:1 1 0;padding:0 10px;min-height:48px;font-size:14px;white-space:nowrap}
+  .facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:24px;font-size:11.5px;line-height:1.3}
+  .facts{grid-template-columns:auto auto 1fr;gap:14px}
+  .facts b{font-size:15px;margin-bottom:2px;white-space:nowrap}
+  .hero-frame{justify-self:stretch;width:100%;max-width:none}
+  .hero-frame img{aspect-ratio:4/4.4;border-radius:22px}
+  .hero-ask{left:12px;top:12px;font-size:14.5px;padding:11px 14px;max-width:82%}
+  .hero-tag{right:12px;left:auto;bottom:12px;padding:12px 14px;border-radius:16px;box-shadow:0 10px 30px -12px rgba(43,23,72,.35)}
+  .hero-tag b{font-size:19px}.hero-tag s{font-size:12px}
+  .promise{padding-top:8px}
+  .head{flex-direction:column;align-items:flex-start}
+  .money{gap:26px}.money b{font-size:22px}
+  .strip figure{width:190px}
+  .revs,.foot{grid-template-columns:1fr}
+  .rev-photo{grid-column:1/-1;min-height:260px}.rev-photo div{left:22px;top:22px}
+  /* на телефоне текст над фото, а не поверх — чтобы не наезжал на лица */
+  .tiles{gap:10px}
+  .tile{aspect-ratio:auto;border-radius:20px;display:flex;flex-direction:column;background:#fff;box-shadow:none;
+    border:1px solid var(--line)}
+  .tile:after{display:none}
+  .tile div{position:static;order:-1;padding:14px 14px 12px}
+  .tile img{position:static;height:150px;width:100%}
+  .tile img.owner{height:150px;object-position:50% 22%;-webkit-mask-image:none;mask-image:none}
+  .tile h3{font-size:16px}.tile p{font-size:12px;margin-top:6px}
+  .goods{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .good{border-radius:18px}.good .gb{padding:10px 12px 14px}
+  .good .nm{font-size:14px}.good .pr{font-size:19px}
+  .good .ga{flex-direction:column;align-items:stretch;gap:6px}
+  .good .want{padding:10px 8px;font-size:13px;white-space:nowrap}.good .av{font-size:12px;text-align:center}
+  .good.ask{padding:18px}.good.ask h3{font-size:18px}.good.ask p{font-size:13px;margin-bottom:14px}.good.ask a{padding:9px 14px;font-size:13px}
+  .flow{padding:34px 24px;border-radius:28px}
+  .req{padding:32px 24px;border-radius:28px}
+  .route{opacity:.4}
+  .req .actions{justify-content:flex-start}
+  .rdot{width:10px;height:10px;margin:-5px 0 0 -5px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation:none!important;transition:none!important}
+  .rise{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="route" id="route" aria-hidden="true">
+  <svg id="routeSvg" viewBox="0 0 100 1000" preserveAspectRatio="none">
+    <path class="ghost" id="routeGhost"/><path id="routePath"/>
+  </svg>
+  <div class="rdot" id="rdot"></div>
+</div>
+
+<nav>
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="ГЕШ СТОР, наверх">
+      <img src="images/brand/logo.svg" alt="ГЕШ СТОР">
+    </a>
+    <div class="navlinks">
+      <a href="#cases">Кейсы</a><a href="#how">Как это работает</a><a href="#prices">Есть сейчас</a>
+      <a href="#reviews">Отзывы</a><a href="news.html">Новости</a>
+    </div>
+    <button class="tg" type="button" data-write>Написать</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ===== HERO ===== -->
+<div class="wrap hero" id="top">
+  <div>
+    <div class="eyebrow">Персональный сервис подбора техники</div>
+    <h1>Техника<br><span class="v">выгоднее.</span></h1>
+    <p class="lead">Напишите, что нужно, — найдём дешевле магазина, проверим и привезём. С&nbsp;чеком и гарантией.</p>
+    <div class="actions">
+      <a class="pill" href="#how">Собрать запрос за минуту</a>
+      <a class="pill light" href="#cases">Смотреть кейсы</a>
+    </div>
+    <div class="facts">
+      <div><b>В день заказа</b>Ижевск и Казань</div>
+      <div><b>До 7 дней</b>в любой город России</div>
+      <div><b>Чек и гарантия</b>как в магазине</div>
+    </div>
+  </div>
+  <div class="hero-frame">
+    <img id="heroFrame" src="images/photos/hero-ipad.webp" alt="iPad Air, который нашли клиенту дешевле магазина" width="720" height="900" fetchpriority="high">
+    <div class="hero-ask"><small>Клиент</small><span id="heroAsk">Нужен iPad Air, 256&nbsp;ГБ — в подарок жене. Найдёте выгоднее?</span></div>
+    <div class="hero-tag" id="heroTag"></div>
+  </div>
+</div>
+
+
+<!-- ===== ОБЕЩАНИЯ ===== -->
+<div class="wrap promise">
+  <div class="cards rise">
+    <div class="card"><img src="images/photos/owner.webp" alt="Евгений, ГЕШ СТОР" loading="lazy" style="object-position:50% 20%">
+      <div><h3>Лично</h3><p>Евгений ведёт каждый запрос</p></div></div>
+    <div class="card"><img src="images/photos/washer.webp" alt="Подбор бытовой техники" loading="lazy" style="object-position:60% 70%">
+      <div><h3>Под ключ</h3><p>Телефон, ноутбук, техника для дома</p></div></div>
+    <div class="card"><img src="images/photos/iphone.webp" alt="Новый iPhone с чеком и гарантией" loading="lazy" style="object-position:65% 60%">
+      <div><h3>Чек и гарантия</h3><p>Документы остаются у вас</p></div></div>
+    <div class="card"><img src="images/photos/courier.webp" alt="Доставка техники по России" loading="lazy" style="object-position:60% 35%">
+      <div><h3>По всей России</h3><p>Проверим и отправим СДЭК</p></div></div>
+  </div>
+</div>
+
+<!-- ===== КЕЙСЫ ===== -->
+<section id="cases">
+  <div class="wrap">
+    <div class="head rise">
+      <h2>Не товары.<br><span class="v">Решённые задачи</span></h2>
+      <p>Последние настоящие запросы клиентов и что из них вышло.</p>
+    </div>
+    <div class="tabs rise" id="tabs"></div>
+    <div class="case" id="case">
+      <div>
+        <span class="fresh" id="caseFresh" hidden>Актуальный кейс</span><span class="eyebrow">Задача клиента</span>
+        <p class="case-q" id="caseQ"></p>
+        <div class="money" id="caseMoney"></div>
+        <details class="case-more"><summary>Как это было</summary>
+          <p class="case-lead" id="caseLead"></p>
+          <div class="chips" id="caseChips"></div>
+          <p class="money-note" id="caseNote">«В магазине» — цена той же модели в рознице на дату кейса.</p>
+        </details>
+      </div>
+      <div class="strip" id="caseStrip"></div>
+      <div class="all-cases"><a class="pill light" href="https://t.me/geshstore" target="_blank" rel="noopener">Все кейсы — в Telegram →</a><a class="pill light" href="news.html">Новости и находки →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ИНТЕРАКТИВ: ЗАКАЗ + КОНСТРУКТОР ЗАПРОСА ===== -->
+<section id="how" style="padding-top:0">
+  <div class="wrap">
+    <div class="flow rise">
+      <h2>Как это работает</h2>
+      <p class="sub">Ответьте на пару вопросов — сообщение соберётся само.</p>
+      <div class="flow-grid">
+        <div>
+          <div class="nodes" id="nodes"><i class="fill" id="nodeFill"></i></div>
+          <div class="qbuild" id="qbuild">
+            <div class="qtop"><span id="qCount">Вопрос 1 из 6</span><button type="button" id="qBack" hidden>← назад</button></div>
+            <div class="qgroup cur"><span>Что ищем?</span><div class="opts" id="qWhat"></div></div>
+            <div class="qgroup"><span>Какой бюджет?</span><div class="opts" id="qBudget"></div></div>
+            <div class="qgroup"><span>Когда нужно?</span><div class="opts" id="qWhen"></div></div>
+            <div class="qgroup"><span>Для чего?</span><div class="opts" id="qFor"></div></div>
+            <div class="qgroup"><span>Есть старая техника?</span><div class="opts" id="qTrade"></div></div>
+            <div class="qgroup"><span>Знаете модель? Можно пропустить</span>
+              <input id="qfree" type="text" placeholder="Модель или ссылка" autocomplete="off" aria-label="Модель или ссылка на товар">
+              <button class="pill qdone" type="button" id="qDone">Скопировать и написать</button>
+              <p class="qnote">Имя и телефон не нужны. Текст скопируется — вставите его в удобный мессенджер.</p>
+            </div>
+          </div>
+        </div>
+        <div class="phone-col">
+          <div class="phone">
+            <div class="bar"><div class="ava"></div><div><b>ГЕШ СТОР</b><small>онлайн</small></div></div>
+            <div class="chatlog" id="chat"></div>
+          </div>
+          <button class="pill send" id="qsend" type="button">Скопировать и написать</button>
+          <p class="copied" id="qcopied">текст скопирован — вставьте в чат</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ЕСТЬ СЕЙЧАС: товары из объявлений ===== -->
+<section id="prices" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rise">
+      <h2>Есть<br><span class="v">в наличии</span></h2>
+      <p><span class="live" id="goodsLive">Цены обновляются каждый день</span></p>
+    </div>
+    <div class="goods rise" id="goods"></div>
+    <p class="deals-note" id="goodsNote"></p>
+  </div>
+</section>
+
+<!-- ===== ОТЗЫВЫ ===== -->
+<section id="reviews" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rise">
+      <h2>Что говорят<br><span class="v">клиенты</span></h2>
+      <p>Первые отзывы на сайте. Остальные — в Telegram, с датами.</p>
+    </div>
+    <div class="rv-row rise" id="revs"></div>
+    <div class="rv-more">
+      <a class="pill light" href="https://t.me/GESH_STORE" target="_blank" rel="noopener">Все отзывы в Telegram</a>
+      <a class="pill light" href="https://vk.com/evgnybrv" target="_blank" rel="noopener">ВКонтакте</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ЧАСТЫЕ ВОПРОСЫ ===== -->
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rise"><h2>Частые<br><span class="v">вопросы</span></h2></div>
+    <div class="faq rise">
+      <details><summary>Почему дешевле, чем в магазине?</summary>
+        <p>Сравниваем предложения поставщиков и магазинов по всей России и берём выгодное. Цену называем до покупки.</p></details>
+      <details><summary>Как понять, что вы настоящие?</summary>
+        <p>Попросите видео с вашим товаром и вашим ником на листке — снимем и пришлём. Кейсы и отзывы — в нашем канале с датами.</p>
+        <button class="ask-proof" type="button" id="askProof">Попросить видео с товаром</button></details>
+      <details><summary>Будут ли чек и гарантия?</summary>
+        <p>Да. Официальный чек и гарантия остаются у вас — как при обычной покупке.</p></details>
+      <div class="faq-rest" id="faqRest" hidden>
+      <details><summary>Можно просто прислать ссылку на товар?</summary>
+        <p>Да. Пришлите ссылку или название модели — ответим ценой, обычно за час.</p>
+        <button class="ask-proof" type="button" data-write>Прислать ссылку</button></details>
+      <details><summary>Сколько ждать?</summary>
+        <p>В Ижевске и Казани — можно в день заказа. В любой другой город России — до 7 дней.</p></details>
+      <details><summary>Можно сдать старую технику в зачёт?</summary>
+        <p>Да, пришлите фото и модель — оценим и учтём в цене новой.</p></details>
+      <details><summary>Как оплатить?</summary>
+        <p>Порядок оплаты объясняем до покупки. Подробно — на странице <a href="how.html" style="color:var(--violet)">«Как мы работаем»</a>.</p></details>
+      </div>
+      <button class="faq-more" type="button" id="faqMore">Ещё 4 вопроса ▾</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== СОЦСЕТИ ===== -->
+<section style="padding-top:0">
+  <div class="wrap social rise">
+    <div>
+      <h2>Задачу можно<br><span class="v">прислать как есть</span></h2>
+      <p class="sub">Ссылку, скриншот или голосовое — куда вам удобнее.</p>
+    </div>
+    <div class="actions" style="margin:0">
+      <a class="pill" data-contact="tg" href="https://t.me/evfgeniy" target="_blank" rel="noopener">Telegram</a>
+      <a class="pill light" data-contact="vk" href="https://vk.me/evgnybrv" target="_blank" rel="noopener">ВКонтакте</a>
+      <button class="pill light" data-contact="max" type="button">Max</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo foot-logo" href="#top" aria-label="ГЕШ СТОР, наверх" style="margin-bottom:16px">
+          <img src="images/brand/logo.svg" alt="ГЕШ СТОР">
+        </a>
+        <p style="margin:0">Сервис подбора техники.<br>Найдём · проверим · привезём.</p>
+      </div>
+      <div>
+        <h4>Связь</h4>
+        <a href="https://t.me/evfgeniy" target="_blank" rel="noopener">Telegram — написать лично</a>
+        <a href="https://vk.me/evgnybrv" target="_blank" rel="noopener">ВКонтакте — написать</a>
+        <button type="button" data-contact="max" style="background:none;border:0;padding:3px 0;color:inherit;cursor:pointer;text-align:left;font:inherit">Max</button>
+        <a href="https://t.me/geshstore" target="_blank" rel="noopener">Канал с кейсами</a>
+        <a href="https://t.me/GESH_STORE" target="_blank" rel="noopener">Отзывы клиентов</a>
+      </div>
+      <div>
+        <h4>География</h4>
+        <p style="margin:0"><a href="izhevsk.html" style="display:inline">Ижевск</a> — курьер или самовывоз.<br>Казань — встречаемся лично.<br>По России — СДЭК.</p>
+      </div>
+    </div>
+    <div class="legal">
+      <p>Информационный сайт: данные не собираем, общение — в мессенджерах. Цены — ориентир, не публичная оферта.
+        Товарные знаки принадлежат правообладателям. <a href="how.html" style="display:inline">Как мы работаем</a> · <a href="news.html" style="display:inline">Новости</a> · <a href="about.html" style="display:inline">О сайте</a> · © <span id="year"></span> ГЕШ СТОР</p>
+    </div>
+  </div>
+</footer>
+
+<div class="copied-toast" id="toast" role="status" aria-live="polite"></div>
+<button class="float-tg" id="floatTg" type="button" data-write>Написать</button>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet-box">
+    <button class="sheet-x" type="button" id="sheetX" aria-label="Закрыть">×</button>
+    <h3 id="sheetTitle">Куда написать?</h3>
+    <p class="hint" id="sheetHint"></p>
+    <div id="sheetList"></div>
+  </div>
+</div>
+<div class="sheet" id="pd" role="dialog" aria-modal="true" aria-labelledby="pdName">
+  <div class="sheet-box pd-box">
+    <button class="sheet-x" type="button" id="pdX" aria-label="Закрыть">×</button>
+    <img id="pdImg" alt="">
+    <span class="cat" id="pdCat"></span>
+    <h3 id="pdName"></h3>
+    <b class="pd-pr" id="pdPr"></b>
+    <ul class="pd-list">
+      <li>Проверим перед отправкой и покажем фото</li>
+      <li>Чек и гарантия остаются у вас</li>
+      <li>В Казани — встреча, по России — СДЭК</li>
+      <li>Как оплатить — <a href="how.html">объясним до покупки</a></li>
+    </ul>
+    <button class="pill pd-go" type="button" id="pdGo">Заказать</button>
+    <p class="pd-note">Откроется переписка с готовым сообщением. Итоговую цену подтверждаем там.</p>
+  </div>
+</div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Отзыв крупно"></div>
+<script src="data/cases.js"></script>
+<script src="images/brand/logo-live.js"></script>
+<script src="data/goods.js"></script>
+<script src="data/reviews.js"></script>
+<script>
+/* Данные приходят из трёх генераторов, руками тут ничего не правим:
+     python3 tools/cases_from_stories.py   — кейсы и кадры сторис
+     python3 tools/site_goods.py           — витрина и цифры с Авито
+     python3 tools/reviews_import.py       — отзывы из data/reviews.txt   */
+
+const $ = id => document.getElementById(id);
+const rub = n => new Intl.NumberFormat('ru-RU').format(n) + ' ₽';
+const num = n => new Intl.NumberFormat('ru-RU').format(n);
+const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const CASES = (window.GESH_CASES || []).filter(c => c.frames && c.frames.length);
+const GOODS = window.GESH_GOODS || [];
+const REVIEWS = window.GESH_REVIEWS || [];
+/* Куда можно написать. Появится ссылка на Max — вставить сюда, больше нигде менять не нужно. */
+const CONTACTS = [
+  {id:'tg',  name:'Telegram',  note:'обычно отвечаем быстрее всего', url:'https://t.me/evfgeniy', mark:'TG'},
+  {id:'vk',  name:'ВКонтакте', note:'личные сообщения',               url:'https://vk.me/evgnybrv', mark:'VK'},
+  {id:'max', name:'Max',       note:'',                               url:'', mark:'M'},
+];
+const TG = CONTACTS[0].url;
+
+$('year').textContent = new Date().getFullYear();
+
+/* ---------- маршрутная линия ---------- */
+const routeLayer = $('route'), svg = $('routeSvg'), path = $('routePath'), ghost = $('routeGhost');
+/* Линия идёт только по полям страницы, а с одной стороны на другую
+   переходит в пустых промежутках между блоками — так она никогда
+   не ложится на текст и лица. Путь пересчитывается по реальной вёрстке. */
+const CURTAINS = ['.hero-frame', '.cards', '#how .flow', '#goods'];
+const ROUTE_BLOCKS = ['.hero', '.promise', '#cases > .wrap', '#how .flow', '#prices > .wrap',
+                      '#reviews > .wrap', '#faq > .wrap', '.social', 'footer'];
+function buildRoute(){
+  const W = document.documentElement.clientWidth, y0 = scrollY;
+  const gut = document.querySelector('main .wrap').getBoundingClientRect().left;
+  const xL = Math.max(6, gut / 2), xR = W - xL;
+  const boxes = ROUTE_BLOCKS.map(sel => document.querySelector(sel))
+    .filter(el => el && el.offsetHeight)
+    .map(el => {                                   // границы содержимого без пустых отступов
+      const kids = el.tagName === 'FOOTER' ? [el] : [...el.children].filter(k => k.offsetHeight);
+      const rs = kids.map(k => k.getBoundingClientRect());
+      return {top: Math.min(...rs.map(r => r.top)) + y0, bottom: Math.max(...rs.map(r => r.bottom)) + y0};
+    });
+  /* Линия никогда не пересекает страницу в узкой щели — там получалась плоская
+     диагональ с углами. Вдоль поля она идёт мягкой волной, а на другую сторону
+     перетекает длинной S-кривой ЗА широким сплошным блоком (плитки, тёмный блок,
+     витрина): вход и выход видны по краям, середина спрятана под блоком. */
+  const amp = Math.max(3, Math.min(gut * .38, 64));
+  let x = xL, y = 0, d = `M ${xL} 0`, sgn = 1;
+  const arc = (y1) => {
+    const len = y1 - y;
+    if (len < 30) { if (len > 0) d += ` L ${x} ${y1}`; y = Math.max(y, y1); return; }
+    const n = Math.max(1, Math.round(len / 420)), step = len / n;
+    for (let k = 0; k < n; k++){                    // горб из двух половинок: на концах касательная
+      const a = y + step * k, b = a + step, m = (a + b) / 2, q = step * .22, off = amp * sgn;   // вертикальна
+      d += ` C ${x} ${a + q}, ${x + off} ${m - q}, ${x + off} ${m}`;
+      d += ` C ${x + off} ${m + q}, ${x} ${b - q}, ${x} ${b}`;
+      sgn = -sgn;
+    }
+    y = y1;
+  };
+  const curtains = CURTAINS.map(sel => document.querySelector(sel))
+    .filter(el => el && el.offsetHeight > 180)
+    .map(el => { const r = el.getBoundingClientRect(); return {top: r.top + y0, bottom: r.bottom + y0, w: r.width}; })
+    .filter(c => c.w > W * .55)                      // только блоки почти во всю ширину
+    .sort((a, b) => a.top - b.top);
+  for (const c of curtains){
+    const h = c.bottom - c.top, ya = c.top + h * .12, yb = c.bottom - h * .12;
+    if (ya <= y + 40) continue;
+    const nx = x === xL ? xR : xL, k = (yb - ya) * .5;
+    arc(ya);
+    d += ` C ${x} ${ya + k}, ${nx} ${yb - k}, ${nx} ${yb}`;
+    x = nx; y = yb;
+  }
+  arc(boxes[boxes.length-1].top - 24);
+  svg.setAttribute('viewBox', `0 0 ${W} ${document.documentElement.scrollHeight}`);
+  path.setAttribute('d', d); ghost.setAttribute('d', d);
+}
+
+const MARKS = [{at:.13,text:'запрос'},{at:.38,text:'поиск'},{at:.63,text:'проверка'},{at:.87,text:'доставка'}];
+MARKS.forEach(m => {
+  m.el = document.createElement('div');
+  m.el.className = 'rmark';
+  m.el.innerHTML = '<i></i><span>' + m.text + '</span>';
+  routeLayer.appendChild(m.el);
+});
+
+let len = 0;
+function layoutRoute(){
+  routeLayer.style.height = '0px';                 // слой сам тянет страницу вниз
+  const h = document.documentElement.scrollHeight;
+  routeLayer.style.height = h + 'px';
+  svg.setAttribute('height', h);
+  buildRoute();
+  len = path.getTotalLength();
+  path.style.strokeDasharray = len;
+  const box = routeLayer.getBoundingClientRect(), ctm = path.getScreenCTM();
+  MARKS.forEach(m => {
+    let best = null;                               // подпись ставим на участке у края
+    for (let d = -.06; d <= .061; d += .006){
+      const t = Math.min(.99, Math.max(.01, m.at + d));
+      const p = path.getPointAtLength(len * t).matrixTransform(ctm);
+      const edge = Math.abs(p.x - box.left - innerWidth / 2);
+      if (!best || edge > best.edge) best = {p, edge, t};
+    }
+    m.pos = best.t;
+    m.el.style.left = (best.p.x - box.left) + 'px';
+    m.el.style.top  = (best.p.y - box.top) + 'px';
+    m.el.classList.toggle('right', best.p.x - box.left > innerWidth * .55);
+  });
+}
+function drawRoute(){
+  const max = document.documentElement.scrollHeight - innerHeight;
+  const t = max > 0 ? Math.min(1, Math.max(0, (scrollY + innerHeight * .55) / (max + innerHeight * .55))) : 1;
+  path.style.strokeDashoffset = len * (1 - t);
+  const box = routeLayer.getBoundingClientRect();
+  const p = path.getPointAtLength(len * t).matrixTransform(path.getScreenCTM());
+  const dot = $('rdot');
+  dot.style.left = (p.x - box.left) + 'px';
+  dot.style.top  = (p.y - box.top) + 'px';
+  dot.classList.toggle('on', scrollY > 40 && t < .995);
+  MARKS.forEach(m => m.el.classList.toggle('passed', t >= (m.pos || m.at)));
+}
+const floatTg = $('floatTg'), heroEl = document.querySelector('.hero'), footEl = document.querySelector('footer');
+function drawFloat(){
+  const past = heroEl.getBoundingClientRect().bottom < 0;
+  const nearFoot = footEl.getBoundingClientRect().top < innerHeight;
+  floatTg.classList.toggle('on', past && !nearFoot);
+}
+let ticking = false;
+addEventListener('scroll', () => {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => { drawRoute(); drawFloat(); ticking = false; });
+}, {passive:true});
+addEventListener('resize', () => { layoutRoute(); drawRoute(); });
+
+/* ---------- появление ---------- */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}), {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rise').forEach(el => io.observe(el));
+
+/* ---------- кейсы ---------- */
+const FRAME_CAPS = ["Задача клиента","Сравнили цену","Итог кейса","Что дальше"];
+function renderCase(i){
+  const c = CASES[i]; if (!c) return;
+  [...$('tabs').children].forEach((b,n) => b.classList.toggle('on', n===i));
+  $('caseFresh').hidden = !c.fresh;
+  $('caseQ').textContent = c.request || c.product;
+  $('caseLead').textContent = c.lead || c.outcome || c.title;
+  const money = [];
+  if (c.store_price) money.push(`<div class="old"><span>В магазине</span><b>${rub(c.store_price)}</b></div>`);
+  if (c.price)       money.push(`<div class="new"><span>Цена ГЕШ</span><b>${rub(c.price)}</b></div>`);
+
+  $('caseNote').style.display = c.store_price ? '' : 'none';
+  const chips = [];
+  if (c.saving) money.push(`<div class="save">экономия ${rub(c.saving)}</div>`);
+  [c.service, c.extra].filter(Boolean).forEach(t =>
+    String(t).split('·').map(s => s.trim()).filter(Boolean)
+      .forEach(s => chips.push(`<span class="chip">${s}</span>`)));
+  $('caseChips').innerHTML = chips.join('');
+  $('caseMoney').innerHTML = money.join('');
+  $('caseMoney').style.display = money.length ? '' : 'none';
+  $('caseLead').hidden = !$('caseLead').textContent;
+  $('caseStrip').innerHTML = c.frames.map((f,n) => `
+    <figure><img src="${f}" alt="${c.tab} — кадр ${n+1}" loading="lazy">
+      <figcaption>${FRAME_CAPS[n] || 'кадр ' + (n+1)}</figcaption></figure>`).join('');
+  $('caseStrip').scrollTo({left:0, behavior: calm ? 'auto' : 'smooth'});
+  const el = $('case');
+  el.classList.remove('swap'); void el.offsetWidth; el.classList.add('swap');
+  requestAnimationFrame(layoutRoute);
+}
+if (CASES.length){
+  // генератор обрезает длинные названия вкладок — тогда берём полное название товара
+  // короткие человеческие ярлыки вкладок: помещаются в одну строку на телефоне
+  const SHORT = [[/ipad air/i,'iPad Air'],[/комплектующ|пк\b|компьютер/i,'Сборка ПК'],
+                 [/iphone\s*17/i,'iPhone 17'],[/духов/i,'Духовой шкаф'],[/dyson/i,'Dyson'],[/watch/i,'Часы']];
+  const tabName = c => {
+    const hit = SHORT.find(([re]) => re.test(`${c.tab} ${c.product || ''}`));
+    if (hit) return hit[1];
+    let t = c.tab;
+    if (t.length >= 26 && c.product){             // короткое имя из первых слов товара
+      t = '';
+      for (const w of c.product.split(' ')){ if ((t + ' ' + w).trim().length > 28) break; t = (t + ' ' + w).trim(); }
+    }
+    return /^[а-яё]/.test(t) ? t[0].toUpperCase() + t.slice(1) : t;   // iPhone не трогаем
+  };
+  $('tabs').innerHTML = CASES.map((c,i) => `<button class="tab" type="button" data-i="${i}">${tabName(c)}${c.fresh ? '<span class="dot" aria-label="актуальный"></span>' : ''}</button>`).join('');
+  $('tabs').addEventListener('click', e => { const b = e.target.closest('button'); if (b) renderCase(+b.dataset.i); });
+  // iPad уже на первом экране; незаконченный кейс («ждём плату») первым не показываем
+  // свежий кейс, выложенный через «✅ Выложить», — всегда первым
+  const fresh = CASES.findIndex(c => c.fresh);
+  const firstCase = fresh >= 0 ? fresh : CASES.findIndex((c, i) => i > 0 && !/ждем|ждём/i.test(`${c.lead || ''} ${c.outcome || ''}`));
+  renderCase(firstCase > 0 || fresh === 0 ? firstCase : 0);
+  const hero = CASES.find(c => c.slug === 'ipad-air') || CASES[0];
+  $('heroTag').innerHTML = hero.price
+    ? `<small>Цена ГЕШ</small><b>${rub(hero.price)}</b>` +
+      (hero.store_price ? `<s>в магазине ${rub(hero.store_price)}</s><em>−${rub(hero.store_price - hero.price)}</em>` : '')
+    : `<small>${hero.tab}</small><b>Собрали под задачу</b>`;
+} else {
+  $('cases').style.display = 'none';
+  $('heroTag').remove();
+}
+
+/* ---------- интерактив: маршрут заказа + конструктор запроса ---------- */
+const Q = {
+  what:  ['Телефон','Планшет','Ноутбук','Техника для дома','Подарок','Другое'],
+  for:   ['не важно','учёба','игры','фото и видео','работа','родителям'],
+  budget:['до 30 000 ₽','30–70 000 ₽','70–120 000 ₽','важнее качество'],
+  when:  ['нужно сейчас','на этой неделе','просто прицениваюсь'],
+  trade: ['нет','есть — хочу сдать в зачёт'],
+};
+const picked = {for:'не важно', what:'Телефон', budget:'30–70 000 ₽', when:'на этой неделе', trade:'нет'};
+
+function requestText(){
+  const free = $('qfree').value.trim();
+  return [
+    'Здравствуйте! Пишу с сайта.',
+    'Нужно: ' + picked.what.toLowerCase() + (free ? ' — ' + free : ''),
+    ...(picked.for !== 'не важно' ? ['Для чего: ' + picked.for] : []),
+    'Бюджет: ' + picked.budget,
+    'Сроки: ' + picked.when,
+    ...(picked.trade !== 'нет' ? ['Есть старая техника — хочу сдать в зачёт'] : []),
+    'Подскажете, сколько выйдет?',
+  ].join('\n');
+}
+const esc = t => t.replace(/[<>&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]));
+
+/* первый шаг живой: в переписке лежит ровно то, что собрано чипами */
+const FLOW = [
+  {t:'Пишете, что нужно', s:'Соберите запрос прямо здесь — он появится в переписке',
+   chat:() => [['me', esc(requestText()).replace(/\n/g,'<br>')],
+               ['them','Принял. Смотрю у поставщиков, вернусь с ценой']]},
+  {t:'Считаем цену', s:'Сравниваем предложения поставщиков и объясняем выбор',
+   chat:() => [['them','Нашёл ту же модель.<br><b>70 990 ₽</b> вместо 84 990 в магазине'],
+               ['sys','экономия 14 000 ₽'],
+               ['me','А чек и гарантия?'],
+               ['them','Официальный чек, гарантия поставщика — всё остаётся у вас']]},
+  {t:'Договариваемся', s:'Фиксируем цену, пока курс не убежал',
+   chat:() => [['me','Давайте'],
+               ['them','Цену зафиксировал, договорился с поставщиком'],
+               ['sys','договорились']]},
+  {t:'Везём с треком', s:'Отправляем СДЭК, трек сразу вам',
+   chat:() => [['them','Отправил, трек <b>1055 4321 8890</b>'],
+               ['them','Можно отслеживать самому, пишите если что']]},
+  {t:'Получаете + подарок', s:'Кладём небольшой презент',
+   chat:() => [['me','Всё пришло, спасибо! И за подарок отдельно )'],
+               ['them','Пользуйтесь. Понадобится что-то ещё — пишите'],
+               ['sys','кейс закрыт']]},
+];
+
+$('nodes').insertAdjacentHTML('beforeend', FLOW.map((f,i) =>
+  '<button class="node" type="button" data-i="' + i + '"><b>' + f.t + '</b><small>' + f.s + '</small></button>').join(''));
+const nodeEls = [...document.querySelectorAll('.node')];
+let fi = -1;
+
+function drawChat(animate){
+  const chat = $('chat');
+  chat.innerHTML = '';
+  FLOW[fi].chat().forEach(([who, text], n) => {
+    const b = document.createElement('div');
+    b.className = 'bub ' + who;
+    b.innerHTML = text;
+    b.style.animationDelay = (calm || !animate) ? '0s' : (n * .28) + 's';
+    chat.appendChild(b);
+  });
+}
+
+function showStep(i, force){
+  if (i === fi && !force) return;
+  fi = i;
+  nodeEls.forEach((n,k) => { n.classList.toggle('on', k===i); n.classList.toggle('done', k<i); });
+  const first = nodeEls[0].offsetTop + nodeEls[0].offsetHeight/2;
+  const cur = nodeEls[i].offsetTop + nodeEls[i].offsetHeight/2;
+  $('nodeFill').style.height = Math.max(0, cur - first) + 'px';
+  $('qbuild').classList.toggle('on', i === 0);      // конструктор — часть первого шага
+  $('qsend').classList.toggle('on', i === 0);
+  drawChat(true);
+  requestAnimationFrame(layoutRoute);
+}
+$('nodes').addEventListener('click', e => {
+  const b = e.target.closest('.node'); if (b) showStep(+b.dataset.i);
+});
+
+function fillOpts(id, key){
+  $(id).innerHTML = Q[key].map(v =>
+    '<button class="opt ' + (v===picked[key]?'on':'') + '" type="button" data-v="' + v + '">' + v + '</button>').join('');
+  $(id).addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    picked[key] = b.dataset.v;
+    [...$(id).children].forEach(x => x.classList.toggle('on', x === b));
+    if (fi === 0) drawChat(false);
+  });
+}
+fillOpts('qWhat','what'); fillOpts('qFor','for'); fillOpts('qBudget','budget'); fillOpts('qWhen','when'); fillOpts('qTrade','trade');
+/* по одному вопросу: ответил — появился следующий, как в разговоре с продавцом */
+const qGroups = [...document.querySelectorAll('#qbuild .qgroup')];
+let qi = 0;
+function qShow(i){
+  qi = Math.max(0, Math.min(qGroups.length - 1, i));
+  qGroups.forEach((g, k) => g.classList.toggle('cur', k === qi));
+  $('qCount').textContent = `Вопрос ${qi + 1} из ${qGroups.length}`;
+  $('qBack').hidden = qi === 0;
+  requestAnimationFrame(layoutRoute);
+}
+$('qbuild').addEventListener('click', e => {
+  if (e.target.closest('.opt')) setTimeout(() => qShow(qi + 1), calm ? 0 : 220);
+});
+$('qBack').addEventListener('click', () => qShow(qi - 1));
+$('qDone').addEventListener('click', () => copyAndOpen(requestText()));
+$('qfree').addEventListener('input', () => { if (fi === 0) drawChat(false); });
+showStep(0, true);
+
+/* Сайт ничего не отправляет сам: текст кладём в буфер обмена и открываем Telegram —
+   человек вставляет его в чат и сам решает, отправлять ли. */
+async function copyText(text){
+  try { await navigator.clipboard.writeText(text); return true; }
+  catch {
+    const ta = document.createElement('textarea');  // запасной путь для file:// и старых браузеров
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    let ok = false; try { ok = document.execCommand('copy'); } catch {}
+    ta.remove(); return ok;
+  }
+}
+/* Окно «Куда написать?». Если передан текст — он уже в буфере, остаётся вставить в чат. */
+function openSheet(text){
+  $('sheetHint').textContent = text ? 'Текст скопирован — откройте чат и вставьте его.' : 'Ответим там, где вам удобнее.';
+  $('sheetList').innerHTML = CONTACTS.map(c => c.url
+    ? `<a class="ch c-${c.id}" href="${c.url}" target="_blank" rel="noopener"><i>${c.mark}</i><span>${c.name}<small>${c.note}</small></span></a>`
+    : `<div class="ch c-${c.id} off"><i>${c.mark}</i><span>${c.name}<small>скоро появится</small></span></div>`).join('');
+  lastFocus = document.activeElement;
+  $('sheet').classList.add('on');
+  setTimeout(() => ($('sheetList').querySelector('a.ch') || $('sheetX')).focus(), 60);
+}
+let lastFocus = null;
+function closeSheet(){
+  if (!$('sheet').classList.contains('on')) return;
+  $('sheet').classList.remove('on');
+  if (lastFocus && lastFocus.focus) lastFocus.focus();
+}
+function closeLb(){ $('lb').classList.remove('on'); $('lb').innerHTML = ''; }
+$('sheet').addEventListener('click', e => { if (e.target === $('sheet') || e.target.closest('#sheetX') || e.target.closest('a.ch')) closeSheet(); });
+addEventListener('keydown', e => { if (e.key === 'Escape') { closeSheet(); closeLb(); } });
+async function copyAndOpen(text){ await copyText(text); openSheet(text); }
+document.addEventListener('click', e => {
+  const w = e.target.closest('[data-write]');
+  if (w) { e.preventDefault(); openSheet(null); }
+});
+/* прямые кнопки мессенджеров: Max без ссылки пока открывает окно выбора */
+document.querySelectorAll('[data-contact]').forEach(a => {
+  const c = CONTACTS.find(x => x.id === a.dataset.contact);
+  if (c && c.url && a.tagName === 'A') a.href = c.url;
+  else a.addEventListener('click', e => { e.preventDefault(); c && c.url ? window.open(c.url, '_blank', 'noopener') : openSheet(null); });
+});
+
+$('faqMore').addEventListener('click', e => { $('faqRest').hidden = false; e.currentTarget.remove(); requestAnimationFrame(layoutRoute); });
+$('askProof').addEventListener('click', () => copyAndOpen('Здравствуйте! Пишу с сайта.\nХочу убедиться, что вы настоящие: можете прислать видео с товаром и моим ником на листке?'));
+
+$('qsend').addEventListener('click', () => copyAndOpen(requestText()));
+
+/* ---------- есть сейчас: карточки товаров ---------- */
+const MARK_O='M840.6 500Q840.6 587.9 814.5 654.5Q788.3 721.2 742.9 766.1Q697.5 811 634.8 833.7Q572.1 856.4 500 856.4Q429.9 856.4 367.7 833.7Q305.5 811 259.1 766.1Q212.7 721.2 186 654.5Q159.4 587.9 159.4 500Q159.4 412.1 187 345.5Q214.7 278.8 261.6 233.4Q308.5 188 370.2 165.3Q431.9 142.6 500 142.6Q570.1 142.6 632.3 165.3Q694.5 188 740.9 233.4Q787.3 278.8 814 345.5Q840.6 412.1 840.6 500Z';
+if (GOODS.length){
+  const card = (g, i) => `
+    <div class="good" data-i="${i}" role="button" tabindex="0" aria-label="${esc(g.name)} — подробнее">
+      <div class="ph"><svg class="ld" viewBox="0 0 1000 1000" aria-hidden="true"><path fill="#7451D6" d="${MARK_O}"/><g transform="translate(503 500) scale(5.92)"><g class="lp"><path fill="#fff" transform="translate(-30.5 -31)" d="M1 62 C-2 30 22 4 60 0 C61 34 38 58 1 62Z"/></g></g></svg>
+      <img src="${g.image}" alt="${esc(g.name)}" loading="lazy" onload="this.parentNode.classList.add('ok')" onerror="this.parentNode.classList.add('ok');this.style.visibility='hidden'"></div>
+      <div class="gb">
+        <span class="cat">${g.category}</span>
+        <span class="nm">${esc(g.name)}</span>
+        <span class="pr">${g.price_from ? '<small>от</small>' : ''}${rub(g.price)}</span>
+        <div class="ga">
+          <button class="want" type="button" data-i="${i}">Подробнее</button>
+        </div>
+      </div>
+    </div>`;
+  $('goods').innerHTML = GOODS.map(card).join('') + `
+    <div class="good ask">
+      <h3>Нет нужного?</h3>
+      <p>Найдём под заказ — любую модель, дешевле магазина.</p>
+      <a href="#how">Собрать запрос</a>
+    </div>`;
+  let pdG = null, pdFrom = null;
+  const openPd = (g, from) => {
+    pdG = g; pdFrom = from;
+    $('pdImg').src = g.image; $('pdImg').alt = g.name;
+    $('pdCat').textContent = g.category; $('pdName').textContent = g.name;
+    $('pdPr').innerHTML = (g.price_from ? '<small style="font-size:16px;color:var(--graphite)">от </small>' : '') + rub(g.price);
+    $('pd').classList.add('on'); $('pdGo').focus();
+  };
+  const closePd = () => { if (!$('pd').classList.contains('on')) return; $('pd').classList.remove('on'); pdFrom && pdFrom.focus(); };
+  $('goods').addEventListener('click', e => {
+    const c = e.target.closest('.good[data-i]'); if (c) openPd(GOODS[+c.dataset.i], c);
+  });
+  $('goods').addEventListener('keydown', e => {
+    const c = e.target.closest('.good[data-i]');
+    if (c && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openPd(GOODS[+c.dataset.i], c); }
+  });
+  $('pd').addEventListener('click', e => { if (e.target === $('pd') || e.target.closest('#pdX')) closePd(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape') closePd(); });
+  $('pdGo').addEventListener('click', () => {
+    const g = pdG; closePd();
+    copyAndOpen(`Здравствуйте! Пишу с сайта.\nХочу заказать: ${g.name} — ${g.price_from ? 'от ' : ''}${rub(g.price)}.\nЕщё в наличии?`);
+  });
+  // честная свежесть: когда цены реально обновлялись
+  const at = String(window.GESH_GOODS_AT || '');
+  const m = at.match(/^(\d\d)\.(\d\d)\.(\d{4})(?: (\d\d:\d\d))?/);
+  if (m){
+    const d = new Date(+m[3], +m[2] - 1, +m[1]), now = new Date();
+    const days = Math.round((new Date(now.getFullYear(), now.getMonth(), now.getDate()) - d) / 864e5);
+    const when = days === 0 ? 'сегодня' : days === 1 ? 'вчера' : `${m[1]}.${m[2]}`;
+    $('goodsLive').textContent = `Цены обновлены ${when}${m[4] ? ' в ' + m[4] : ''}`;
+    if (days > 3) $('goodsLive').classList.add('old');
+  }
+  $('goodsNote').textContent = 'Итоговую цену подтверждаем в переписке.';
+  requestAnimationFrame(layoutRoute);
+} else {
+  $('prices').style.display = 'none';
+}
+
+/* ---------- отзывы: текст, скриншоты, видео; шаблоны-«рыба» не показываем ---------- */
+const realReviews = REVIEWS.filter(r => {
+  const raw = `${r.text || ''} ${r.author || ''} ${r.item || ''}`;
+  return (r.shot || r.video || r.text) && !/(вставь.+отзыв|третий отзыв|четвёртый|имя клиента)/i.test(raw);
+});
+if (realReviews.length){
+  const srcTag = r => r.source ? `<span class="src">${esc(r.source)}</span>` : '';
+  $('revs').innerHTML = realReviews.map((r, i) => r.video
+    ? `<div class="rv media" data-i="${i}" role="button" tabindex="0">${srcTag(r)}<video src="${r.video}" muted playsinline preload="metadata"></video></div>`
+    : r.shot
+    ? `<div class="rv media" data-i="${i}" role="button" tabindex="0">${srcTag(r)}<img src="${r.shot}" alt="Отзыв клиента${r.author ? ': ' + esc(r.author) : ''}" loading="lazy"></div>`
+    : `<div class="rv">${srcTag(r)}<p>«${esc(r.text)}»</p>
+         <div class="who"><i>${esc((r.author || 'К')[0])}</i><div><b>${esc(r.author || 'Клиент')}</b><span>${esc(r.item || '')}</span></div></div></div>`
+  ).join('');
+  $('revs').addEventListener('click', e => {           // скриншот или видео — крупно поверх страницы
+    const m = e.target.closest('.rv.media'); if (!m) return;
+    const r = realReviews[+m.dataset.i];
+    $('lb').innerHTML = '<button class="lb-x" type="button" aria-label="Закрыть">×</button>' +
+      (r.video ? `<video src="${r.video}" controls autoplay playsinline></video>` : `<img src="${r.shot}" alt="Отзыв клиента крупно">`);
+    $('lb').classList.add('on');
+  });
+  $('lb').addEventListener('click', e => { if (e.target === $('lb') || e.target.closest('.lb-x')) closeLb(); });
+  if (realReviews.length <= 2) $('revs').classList.add('few');
+} else {
+  $('revs').style.display = 'none';
+}
+
+/* ---------- старт ---------- */
+addEventListener('load', () => { layoutRoute(); drawRoute(); });
+layoutRoute(); drawRoute();
+</script>
+</body>
+</html>

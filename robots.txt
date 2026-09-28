@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://effgesh-ops.github.io/sitemap.xml
