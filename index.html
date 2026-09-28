@@ -404,19 +404,32 @@ footer{position:relative;z-index:1;background:var(--milk);border-top:1px solid v
 @media (max-width:600px){.check{grid-template-columns:1fr;padding:18px}.check b{font-size:17px}}
 
 /* ===== Отзывы: лента, которую листают пальцем ===== */
-.rv-row{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px;scrollbar-width:none}
+.rv-wrap{position:relative}
+.rv-row{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 18px;scrollbar-width:none;scroll-behavior:smooth}
 .rv-row::-webkit-scrollbar{display:none}
-.rv{flex:0 0 min(78vw,320px);scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:24px;
-  padding:22px;display:flex;flex-direction:column;gap:14px}
-.rv p{margin:0;font-size:15.5px;line-height:1.6}
-.rv .src{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--violet)}
-.rv .who{margin-top:auto;display:flex;align-items:center;gap:10px}
-.rv .who i{width:34px;height:34px;border-radius:50%;background:var(--lilac);color:var(--deep);display:grid;place-items:center;font-style:normal;font-weight:600}
-.rv .who b{display:block;font-weight:500;font-size:14px}.rv .who span{font-size:12.5px;color:var(--graphite)}
-.rv.media{padding:0;overflow:hidden;cursor:zoom-in;position:relative;background:var(--milk)}
-.rv.media img,.rv.media video{width:100%;height:100%;min-height:360px;max-height:460px;object-fit:cover;display:block}
-.rv.media .src{position:absolute;left:14px;top:14px;background:rgba(255,255,255,.92);padding:4px 10px;border-radius:999px}
-.rv-row.few .rv{flex-basis:min(100%,720px)}.rv-row.few .rv p{font-size:clamp(17px,2vw,22px);line-height:1.5}
+.rv{flex:0 0 min(80vw,330px);scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:26px;
+  overflow:hidden;display:flex;flex-direction:column}
+.rv-ph{position:relative;aspect-ratio:4/5;background:var(--milk);cursor:zoom-in;overflow:hidden}
+.rv-ph img,.rv-ph video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.rv:hover .rv-ph img{transform:scale(1.03)}
+.rv-ph .cnt{position:absolute;right:12px;top:12px;background:rgba(20,18,23,.6);color:#fff;font-size:12px;border-radius:999px;padding:3px 9px}
+.rv-ph .play{position:absolute;left:12px;top:12px;background:rgba(255,255,255,.92);color:var(--ink);font-size:12px;font-weight:500;border-radius:999px;padding:4px 10px}
+.rv-b{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.rv-b .tag{align-self:flex-start;font-size:12px;font-weight:500;color:var(--deep);background:var(--lilac);border-radius:999px;padding:4px 10px}
+.rv-b p{margin:0;font-size:15px;line-height:1.55;color:var(--text);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.rv-b p.open{-webkit-line-clamp:unset;display:block}
+.rv-b .more{align-self:flex-start;background:none;border:0;padding:0;color:var(--violet);font-size:13.5px;cursor:pointer}
+.rv-b .meta{margin-top:auto;font-size:12.5px;color:var(--graphite)}
+.rv.txt .rv-b{justify-content:center;padding:26px 24px}
+.rv.txt .rv-b p{font-family:var(--display);font-size:19px;line-height:1.45;color:var(--ink);-webkit-line-clamp:9}
+.rv-arrow{position:absolute;top:38%;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);
+  font-size:26px;line-height:1;cursor:pointer;box-shadow:0 14px 30px -16px rgba(43,23,72,.4);display:grid;place-items:center}
+.rv-arrow.prev{left:-22px}.rv-arrow.next{right:-22px}
+.rv-arrow[disabled]{opacity:0;pointer-events:none}
+@media (max-width:760px){.rv-ph{aspect-ratio:1/1}.rv-arrow{display:none}.rv-row{margin-right:-20px;padding-right:20px}}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);border:0;background:rgba(255,255,255,.14);color:#fff;width:48px;height:48px;border-radius:50%;font-size:28px;cursor:pointer}
+.lb-nav.l{left:14px}.lb-nav.r{right:14px}
+.lb-cap{position:absolute;left:0;right:0;bottom:16px;text-align:center;color:#ddd;font-size:13px}
 .lb-x{position:absolute;right:18px;top:14px;border:0;background:none;color:#fff;font-size:34px;cursor:pointer}
 .rv-more{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
 .lb{position:fixed;inset:0;z-index:70;background:rgba(20,18,23,.9);display:none;align-items:center;justify-content:center;padding:20px}
@@ -643,12 +656,15 @@ footer{position:relative;z-index:1;background:var(--milk);border-top:1px solid v
   <div class="wrap">
     <div class="head rise">
       <h2>Что говорят<br><span class="v">клиенты</span></h2>
-      <p>Первые отзывы на сайте. Остальные — в Telegram, с датами.</p>
+      <p>12 настоящих отзывов с фото — из нашей группы в Telegram, с 2024 года.</p>
     </div>
-    <div class="rv-row rise" id="revs"></div>
+    <div class="rv-wrap rise">
+      <div class="rv-row" id="revs"></div>
+      <button class="rv-arrow prev" type="button" id="rvPrev" aria-label="Предыдущие отзывы">‹</button>
+      <button class="rv-arrow next" type="button" id="rvNext" aria-label="Следующие отзывы">›</button>
+    </div>
     <div class="rv-more">
-      <a class="pill light" href="https://t.me/GESH_STORE" target="_blank" rel="noopener">Все отзывы в Telegram</a>
-      <a class="pill light" href="https://vk.com/evgnybrv" target="_blank" rel="noopener">ВКонтакте</a>
+      <a class="pill light" href="https://t.me/gesh_store" target="_blank" rel="noopener">Все отзывы — в группе Telegram →</a>
     </div>
   </div>
 </section>
@@ -1180,31 +1196,63 @@ if (GOODS.length){
   $('prices').style.display = 'none';
 }
 
-/* ---------- отзывы: текст, скриншоты, видео; шаблоны-«рыба» не показываем ---------- */
-const realReviews = REVIEWS.filter(r => {
-  const raw = `${r.text || ''} ${r.author || ''} ${r.item || ''}`;
-  return (r.shot || r.video || r.text) && !/(вставь.+отзыв|третий отзыв|четвёртый|имя клиента)/i.test(raw);
-});
-if (realReviews.length){
-  const srcTag = r => r.source ? `<span class="src">${esc(r.source)}</span>` : '';
-  $('revs').innerHTML = realReviews.map((r, i) => r.video
-    ? `<div class="rv media" data-i="${i}" role="button" tabindex="0">${srcTag(r)}<video src="${r.video}" muted playsinline preload="metadata"></video></div>`
-    : r.shot
-    ? `<div class="rv media" data-i="${i}" role="button" tabindex="0">${srcTag(r)}<img src="${r.shot}" alt="Отзыв клиента${r.author ? ': ' + esc(r.author) : ''}" loading="lazy"></div>`
-    : `<div class="rv">${srcTag(r)}<p>«${esc(r.text)}»</p>
-         <div class="who"><i>${esc((r.author || 'К')[0])}</i><div><b>${esc(r.author || 'Клиент')}</b><span>${esc(r.item || '')}</span></div></div></div>`
-  ).join('');
-  $('revs').addEventListener('click', e => {           // скриншот или видео — крупно поверх страницы
-    const m = e.target.closest('.rv.media'); if (!m) return;
-    const r = realReviews[+m.dataset.i];
-    $('lb').innerHTML = '<button class="lb-x" type="button" aria-label="Закрыть">×</button>' +
-      (r.video ? `<video src="${r.video}" controls autoplay playsinline></video>` : `<img src="${r.shot}" alt="Отзыв клиента крупно">`);
-    $('lb').classList.add('on');
+/* ---------- отзывы из группы Telegram: фото, видео, текст ---------- */
+if (REVIEWS.length){
+  const card = (r, i) => {
+    const ph = r.video
+      ? `<div class="rv-ph" data-i="${i}" role="button" tabindex="0" aria-label="Смотреть видео-отзыв"><video src="${r.video}" poster="${r.poster || ''}" muted loop playsinline preload="none"></video><span class="play">▶ видео</span></div>`
+      : r.photos && r.photos.length
+      ? `<div class="rv-ph" data-i="${i}" role="button" tabindex="0" aria-label="Открыть фото крупно"><img src="${r.photos[0]}" alt="${esc(r.item)} — фото клиента" loading="lazy">${r.photos.length > 1 ? `<span class="cnt">1 / ${r.photos.length}</span>` : ''}</div>`
+      : '';
+    return `<article class="rv${ph ? '' : ' txt'}">${ph}<div class="rv-b">
+      <span class="tag">${esc(r.item)}${r.city ? ' · ' + esc(r.city) : ''}</span>
+      <p>«${esc(r.text)}»</p><button class="more" type="button" hidden>Читать полностью</button>
+      <span class="meta">${r.author ? esc(r.author) + ' · ' : ''}${esc(r.date)}</span></div></article>`;
+  };
+  $('revs').innerHTML = REVIEWS.map(card).join('');
+  // «Читать полностью» — только если текст правда обрезан
+  requestAnimationFrame(() => document.querySelectorAll('#revs .rv-b p').forEach(p => {
+    if (p.scrollHeight > p.clientHeight + 4) p.nextElementSibling.hidden = false;
+  }));
+  $('revs').addEventListener('click', e => {
+    const m = e.target.closest('.more');
+    if (m){ const p = m.previousElementSibling; p.classList.toggle('open'); m.textContent = p.classList.contains('open') ? 'Свернуть' : 'Читать полностью'; requestAnimationFrame(layoutRoute); return; }
+    const ph = e.target.closest('.rv-ph'); if (ph) openLb(REVIEWS[+ph.dataset.i], 0);
   });
-  $('lb').addEventListener('click', e => { if (e.target === $('lb') || e.target.closest('.lb-x')) closeLb(); });
-  if (realReviews.length <= 2) $('revs').classList.add('few');
+  $('revs').addEventListener('keydown', e => {
+    const ph = e.target.closest('.rv-ph'); if (ph && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openLb(REVIEWS[+ph.dataset.i], 0); }
+  });
+  // видео в карточке играет без звука, пока его видно
+  const vio = new IntersectionObserver(es => es.forEach(x => { const v = x.target; if (calm) return; x.isIntersecting ? v.play().catch(()=>{}) : v.pause(); }), {threshold:.6});
+  document.querySelectorAll('#revs video').forEach(v => { v.preload = 'metadata'; vio.observe(v); });
+  // стрелки на компьютере
+  const row = $('revs'), step = () => row.firstElementChild.offsetWidth + 16;
+  const arrows = () => { $('rvPrev').disabled = row.scrollLeft < 8; $('rvNext').disabled = row.scrollLeft + row.clientWidth > row.scrollWidth - 8; };
+  $('rvPrev').addEventListener('click', () => row.scrollBy({left:-step()}));
+  $('rvNext').addEventListener('click', () => row.scrollBy({left: step()}));
+  row.addEventListener('scroll', arrows, {passive:true}); arrows();
+  // крупный просмотр: листается между фото одного отзыва
+  let lbR = null, lbK = 0;
+  function openLb(r, k){
+    lbR = r; lbK = k;
+    const items = r.video ? [r.video] : r.photos;
+    const nav = items.length > 1 ? '<button class="lb-nav l" type="button" aria-label="Назад">‹</button><button class="lb-nav r" type="button" aria-label="Вперёд">›</button>' : '';
+    $('lb').innerHTML = '<button class="lb-x" type="button" aria-label="Закрыть">×</button>' + nav +
+      (r.video ? `<video src="${r.video}" controls autoplay playsinline></video>` : `<img src="${items[k]}" alt="${esc(r.item)} — фото клиента">`) +
+      `<div class="lb-cap">${esc(r.item)}${items.length > 1 ? ` · ${k + 1} / ${items.length}` : ''}</div>`;
+    $('lb').classList.add('on'); $('lb').querySelector('.lb-x').focus();
+  }
+  $('lb').addEventListener('click', e => {
+    if (e.target.closest('.lb-nav')) { const n = lbR.photos.length; openLb(lbR, (lbK + (e.target.closest('.r') ? 1 : n - 1)) % n); return; }
+    if (e.target === $('lb') || e.target.closest('.lb-x')) closeLb();
+  });
+  addEventListener('keydown', e => {
+    if (!$('lb').classList.contains('on') || !lbR || !lbR.photos || lbR.photos.length < 2) return;
+    if (e.key === 'ArrowRight') openLb(lbR, (lbK + 1) % lbR.photos.length);
+    if (e.key === 'ArrowLeft') openLb(lbR, (lbK + lbR.photos.length - 1) % lbR.photos.length);
+  });
 } else {
-  $('revs').style.display = 'none';
+  $('reviews').style.display = 'none';
 }
 
 /* ---------- старт ---------- */
