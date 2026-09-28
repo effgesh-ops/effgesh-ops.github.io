@@ -108,13 +108,13 @@ nav{position:sticky;top:0;z-index:40;background:rgba(246,242,238,.9);
 .pill.light:hover{background:var(--lilac);color:var(--deep)}
 
 /* ===== HERO ===== */
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;padding:18px 0 72px}
+.hero{display:grid;grid-template-columns:1fr minmax(0,500px);gap:72px;align-items:center;padding:56px 0 96px}
 .hero h1{font-size:clamp(40px,5vw,72px);margin:22px 0 26px}
 .lead{font-size:20px;line-height:1.55;color:var(--graphite);max-width:520px;margin:0}
 .actions{display:flex;gap:12px;margin-top:38px;flex-wrap:wrap}
 .facts{display:flex;gap:34px;margin-top:52px;font-size:13px;color:var(--graphite)}
 .facts b{display:block;font-size:22px;font-weight:400;color:var(--deep);letter-spacing:-.03em;margin-bottom:3px}
-.hero-frame{position:relative;justify-self:center;width:min(100%,392px)}
+.hero-frame{position:relative;justify-self:end;width:min(100%,500px)}
 /* в кадры сторис вшит старый логотип сверху — показываем кадр без верхних 10% */
 .hero-frame img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;
   border-radius:26px;box-shadow:0 40px 80px -30px rgba(43,23,72,.45)}
@@ -422,6 +422,11 @@ footer{position:relative;z-index:1;background:var(--milk);border-top:1px solid v
 .rv-b .meta{margin-top:auto;font-size:12.5px;color:var(--graphite)}
 .rv.txt .rv-b{justify-content:center;padding:26px 24px}
 .rv.txt .rv-b p{font-family:var(--display);font-size:19px;line-height:1.45;color:var(--ink);-webkit-line-clamp:9}
+.rv-row.drag{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto;user-select:none}
+.rv-row.drag *{pointer-events:none}
+@media (hover:hover) and (pointer:fine){.rv-row{cursor:grab}}
+.rv-bar{position:relative;height:4px;border-radius:4px;background:var(--line);margin:6px 2px 22px;cursor:pointer}
+.rv-bar i{position:absolute;top:0;left:0;height:100%;border-radius:4px;background:var(--violet);transition:left .15s}
 .rv-arrow{position:absolute;top:38%;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);
   font-size:26px;line-height:1;cursor:pointer;box-shadow:0 14px 30px -16px rgba(43,23,72,.4);display:grid;place-items:center}
 .rv-arrow.prev{left:-22px}.rv-arrow.next{right:-22px}
@@ -455,7 +460,7 @@ footer{position:relative;z-index:1;background:var(--milk);border-top:1px solid v
   .node{padding-top:9px;padding-bottom:9px}
   .navlinks{display:none}.tg{margin-left:auto}
   .hero{grid-template-columns:1fr;gap:48px;padding-top:56px}
-  .hero-frame{justify-self:start;max-width:340px}.hero-tag{left:auto;right:-14px}
+  .hero-frame{justify-self:center;max-width:440px}.hero-tag{left:auto;right:-14px}
   .case{grid-template-columns:1fr;gap:36px}
   .revs{grid-template-columns:1fr 1fr}
   .tiles{grid-template-columns:1fr 1fr}
@@ -663,6 +668,7 @@ footer{position:relative;z-index:1;background:var(--milk);border-top:1px solid v
       <button class="rv-arrow prev" type="button" id="rvPrev" aria-label="Предыдущие отзывы">‹</button>
       <button class="rv-arrow next" type="button" id="rvNext" aria-label="Следующие отзывы">›</button>
     </div>
+    <div class="rv-bar" id="rvBar" aria-hidden="true"><i id="rvThumb"></i></div>
     <div class="rv-more">
       <a class="pill light" href="https://t.me/gesh_store" target="_blank" rel="noopener">Все отзывы — в группе Telegram →</a>
     </div>
@@ -1230,7 +1236,30 @@ if (REVIEWS.length){
   const arrows = () => { $('rvPrev').disabled = row.scrollLeft < 8; $('rvNext').disabled = row.scrollLeft + row.clientWidth > row.scrollWidth - 8; };
   $('rvPrev').addEventListener('click', () => row.scrollBy({left:-step()}));
   $('rvNext').addEventListener('click', () => row.scrollBy({left: step()}));
-  row.addEventListener('scroll', arrows, {passive:true}); arrows();
+  // полоска-указатель: где вы в ленте; нажатие по полоске — перескок туда
+  const bar = () => { const vis = row.clientWidth / row.scrollWidth, max = row.scrollWidth - row.clientWidth;
+    $('rvThumb').style.width = (vis * 100) + '%'; $('rvThumb').style.left = (max ? row.scrollLeft / max * (1 - vis) * 100 : 0) + '%'; };
+  $('rvBar').addEventListener('click', e => { const r = $('rvBar').getBoundingClientRect(); row.scrollTo({left:(e.clientX - r.left) / r.width * (row.scrollWidth - row.clientWidth)}); });
+  row.addEventListener('scroll', () => { arrows(); bar(); }, {passive:true}); arrows(); bar();
+  addEventListener('resize', bar);
+  // мышкой ленту можно тянуть, как пальцем; короткий щелчок остаётся щелчком
+  let dx = null, sx = 0, moved = false;
+  row.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse' || e.button) return; dx = e.clientX; sx = row.scrollLeft; moved = false; });
+  addEventListener('pointermove', e => {
+    if (dx === null) return;
+    const d = e.clientX - dx;
+    if (!moved && Math.abs(d) > 6) { moved = true; row.classList.add('drag'); }
+    if (moved) row.scrollLeft = sx - d;
+  });
+  addEventListener('pointerup', () => {
+    if (dx === null) return; dx = null;
+    if (!moved) return;
+    row.classList.remove('drag');
+    const w = step(); row.scrollTo({left: Math.round(row.scrollLeft / w) * w, behavior: calm ? 'auto' : 'smooth'});
+    justDragged = true; setTimeout(() => justDragged = false, 50);
+  });
+  let justDragged = false;
+  row.addEventListener('click', e => { if (justDragged) { e.stopPropagation(); e.preventDefault(); } }, true);
   // крупный просмотр: листается между фото одного отзыва
   let lbR = null, lbK = 0;
   function openLb(r, k){
