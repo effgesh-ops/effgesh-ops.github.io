@@ -12,7 +12,7 @@ window.GESH_GOODS = [
     "name": "iPhone 17, 256 ГБ",
     "price": 76990,
     "category": "Смартфон",
-    "views": 608,
+    "views": 610,
     "favorites": 43,
     "image": "images/goods/iphone-17.webp",
     "price_from": true
@@ -37,15 +37,15 @@ window.GESH_GOODS = [
     "name": "Телевизор Tuvio TD55ufbhh12 55\" 4K",
     "price": 24990,
     "category": "Экран",
-    "views": 194,
-    "favorites": 44,
+    "views": 198,
+    "favorites": 45,
     "image": "images/goods/tuvio-td55ufbhh12.webp"
   },
   {
     "name": "Телевизор Sber SDX-55U4139",
     "price": 24990,
     "category": "Экран",
-    "views": 135,
+    "views": 136,
     "favorites": 13,
     "image": "images/goods/sber-sdx-55u4139.webp"
   },
@@ -53,7 +53,7 @@ window.GESH_GOODS = [
     "name": "Apple Magic Keyboard iPad Air 13",
     "price": 20990,
     "category": "Аксессуар",
-    "views": 128,
+    "views": 129,
     "favorites": 12,
     "image": "images/goods/magic-keyboard-ipad-air-13.webp"
   },
@@ -66,5 +66,5 @@ window.GESH_GOODS = [
     "image": "images/goods/huawei-watch-gt-6.webp"
   }
 ];
-window.GESH_PULSE = {"listed": 25, "views": 5732, "contacts": 255, "favorites": 521};
-window.GESH_GOODS_AT = "28.09.2026 07:54";
+window.GESH_PULSE = {"listed": 25, "views": 5741, "contacts": 256, "favorites": 522};
+window.GESH_GOODS_AT = "28.09.2026 11:00";
