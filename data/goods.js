@@ -67,4 +67,4 @@ window.GESH_GOODS = [
   }
 ];
 window.GESH_PULSE = {"listed": 25, "views": 5770, "contacts": 260, "favorites": 528};
-window.GESH_GOODS_AT = "28.09.2026 18:00";
+window.GESH_GOODS_AT = "29.09.2026 11:00";
