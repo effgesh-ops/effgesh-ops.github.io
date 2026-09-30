@@ -21,7 +21,7 @@ window.GESH_GOODS = [
     "name": "Видеокарта RTX5060Ti windforce 16GB",
     "price": 69990,
     "category": "Техника",
-    "views": 155,
+    "views": 156,
     "favorites": 15,
     "image": "images/goods/gigabyte-rtx-5060-ti-windforce.webp"
   },
@@ -29,7 +29,7 @@ window.GESH_GOODS = [
     "name": "MacBook Neo 13 Citrus",
     "price": 62990,
     "category": "Ноутбук",
-    "views": 95,
+    "views": 99,
     "favorites": 7,
     "image": "images/goods/macbook-neo-citrus.webp"
   },
@@ -37,23 +37,23 @@ window.GESH_GOODS = [
     "name": "Телевизор Tuvio TD55ufbhh12 55\" 4K",
     "price": 24990,
     "category": "Экран",
-    "views": 240,
-    "favorites": 53,
+    "views": 245,
+    "favorites": 54,
     "image": "images/goods/tuvio-td55ufbhh12.webp"
   },
   {
     "name": "Телевизор Sber SDX-55U4139",
     "price": 24990,
     "category": "Экран",
-    "views": 158,
-    "favorites": 17,
+    "views": 162,
+    "favorites": 18,
     "image": "images/goods/sber-sdx-55u4139.webp"
   },
   {
     "name": "Apple Magic Keyboard iPad Air 13",
     "price": 20990,
     "category": "Аксессуар",
-    "views": 138,
+    "views": 139,
     "favorites": 13,
     "image": "images/goods/magic-keyboard-ipad-air-13.webp"
   },
@@ -61,10 +61,10 @@ window.GESH_GOODS = [
     "name": "Huawei Watch GT 6",
     "price": 13990,
     "category": "Носимое",
-    "views": 223,
+    "views": 229,
     "favorites": 16,
     "image": "images/goods/huawei-watch-gt-6.webp"
   }
 ];
-window.GESH_PULSE = {"listed": 25, "views": 5876, "contacts": 262, "favorites": 540};
-window.GESH_GOODS_AT = "30.09.2026 11:00";
+window.GESH_PULSE = {"listed": 25, "views": 5900, "contacts": 263, "favorites": 542};
+window.GESH_GOODS_AT = "30.09.2026 18:00";
