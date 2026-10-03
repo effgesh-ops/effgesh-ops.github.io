@@ -4,7 +4,7 @@ window.GESH_GOODS = [
     "name": "iPhone 17 Pro Max, 256 ГБ",
     "price": 101990,
     "category": "Смартфон",
-    "views": 837,
+    "views": 838,
     "favorites": 67,
     "image": "images/goods/iphone-17-pro-max.webp",
     "price_from": true
@@ -13,17 +13,17 @@ window.GESH_GOODS = [
     "name": "iPhone 17, 256 ГБ",
     "price": 75990,
     "category": "Смартфон",
-    "views": 605,
-    "favorites": 44,
+    "views": 607,
+    "favorites": 45,
     "image": "images/goods/iphone-17.webp",
     "price_from": true
   },
   {
     "name": "Телевизор Tuvio TD55ufbhh12 55\" 4K",
-    "price": 25990,
+    "price": 26990,
     "category": "Экран",
-    "views": 283,
-    "favorites": 62,
+    "views": 290,
+    "favorites": 64,
     "image": "images/goods/tuvio-td55ufbhh12.webp"
   },
   {
@@ -43,5 +43,5 @@ window.GESH_GOODS = [
     "image": "images/goods/huawei-watch-gt-6.webp"
   }
 ];
-window.GESH_PULSE = {"listed": 25, "views": 5925, "contacts": 263, "favorites": 551};
-window.GESH_GOODS_AT = "03.10.2026 11:00";
+window.GESH_PULSE = {"listed": 28, "views": 6060, "contacts": 272, "favorites": 568};
+window.GESH_GOODS_AT = "03.10.2026 18:00";
