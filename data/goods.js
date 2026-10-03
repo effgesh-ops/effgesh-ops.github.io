@@ -13,8 +13,8 @@ window.GESH_GOODS = [
     "name": "iPhone 17, 256 ГБ",
     "price": 75990,
     "category": "Смартфон",
-    "views": 602,
-    "favorites": 43,
+    "views": 605,
+    "favorites": 44,
     "image": "images/goods/iphone-17.webp",
     "price_from": true
   },
@@ -22,8 +22,8 @@ window.GESH_GOODS = [
     "name": "Телевизор Tuvio TD55ufbhh12 55\" 4K",
     "price": 25990,
     "category": "Экран",
-    "views": 270,
-    "favorites": 58,
+    "views": 283,
+    "favorites": 62,
     "image": "images/goods/tuvio-td55ufbhh12.webp"
   },
   {
@@ -38,10 +38,10 @@ window.GESH_GOODS = [
     "name": "Huawei Watch GT 6",
     "price": 13990,
     "category": "Носимое",
-    "views": 245,
-    "favorites": 18,
+    "views": 249,
+    "favorites": 19,
     "image": "images/goods/huawei-watch-gt-6.webp"
   }
 ];
-window.GESH_PULSE = {"listed": 25, "views": 5903, "contacts": 263, "favorites": 545};
-window.GESH_GOODS_AT = "02.10.2026 18:00";
+window.GESH_PULSE = {"listed": 25, "views": 5925, "contacts": 263, "favorites": 551};
+window.GESH_GOODS_AT = "03.10.2026 11:00";
