@@ -13,24 +13,24 @@ window.GESH_GOODS = [
     "name": "iPhone 17, 256 ГБ",
     "price": 75990,
     "category": "Смартфон",
-    "views": 607,
-    "favorites": 45,
+    "views": 611,
+    "favorites": 46,
     "image": "images/goods/iphone-17.webp",
     "price_from": true
   },
   {
     "name": "Телевизор Tuvio TD55ufbhh12 55\" 4K",
-    "price": 26990,
+    "price": 27990,
     "category": "Экран",
-    "views": 290,
-    "favorites": 64,
+    "views": 306,
+    "favorites": 66,
     "image": "images/goods/tuvio-td55ufbhh12.webp"
   },
   {
     "name": "Apple Magic Keyboard iPad Air 13",
     "price": 19991,
     "category": "Аксессуар",
-    "views": 146,
+    "views": 147,
     "favorites": 13,
     "image": "images/goods/magic-keyboard-ipad-air-13.webp"
   },
@@ -38,10 +38,10 @@ window.GESH_GOODS = [
     "name": "Huawei Watch GT 6",
     "price": 13990,
     "category": "Носимое",
-    "views": 249,
-    "favorites": 19,
+    "views": 259,
+    "favorites": 21,
     "image": "images/goods/huawei-watch-gt-6.webp"
   }
 ];
-window.GESH_PULSE = {"listed": 28, "views": 6060, "contacts": 272, "favorites": 568};
-window.GESH_GOODS_AT = "03.10.2026 18:00";
+window.GESH_PULSE = {"listed": 28, "views": 6120, "contacts": 278, "favorites": 576};
+window.GESH_GOODS_AT = "04.10.2026 11:00";
