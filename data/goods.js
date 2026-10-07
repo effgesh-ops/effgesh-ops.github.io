@@ -4,7 +4,7 @@ window.GESH_GOODS = [
     "name": "iPhone 17 Pro Max, 256 ГБ, eSIM",
     "price": 100990,
     "category": "Смартфон",
-    "views": 485,
+    "views": 484,
     "favorites": 50,
     "image": "images/goods/iphone-17-pro-max.webp",
     "store_price": 129990,
@@ -26,7 +26,7 @@ window.GESH_GOODS = [
     "name": "Apple Magic Keyboard iPad Air 13",
     "price": 19991,
     "category": "Аксессуар",
-    "views": 152,
+    "views": 153,
     "favorites": 13,
     "image": "images/goods/magic-keyboard-ipad-air-13.webp"
   },
@@ -34,7 +34,7 @@ window.GESH_GOODS = [
     "name": "Huawei Watch GT 6",
     "price": 13490,
     "category": "Носимое",
-    "views": 283,
+    "views": 289,
     "favorites": 21,
     "image": "images/goods/huawei-watch-gt-6.webp",
     "store_price": 20999,
@@ -42,5 +42,5 @@ window.GESH_GOODS = [
     "store_at": "06.10.2026"
   }
 ];
-window.GESH_PULSE = {"listed": 30, "views": 6243, "contacts": 286, "favorites": 589};
-window.GESH_GOODS_AT = "07.10.2026 11:00";
+window.GESH_PULSE = {"listed": 30, "views": 6255, "contacts": 287, "favorites": 590};
+window.GESH_GOODS_AT = "07.10.2026 18:00";
