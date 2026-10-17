@@ -14,9 +14,9 @@ window.GESH_GOODS = [
   },
   {
     "name": "iPhone 17, 256 ГБ, eSIM",
-    "price": 74490,
+    "price": 73990,
     "category": "Смартфон",
-    "views": 346,
+    "views": 347,
     "favorites": 34,
     "image": "images/goods/iphone-17.webp",
     "store_price": 94990,
@@ -27,11 +27,11 @@ window.GESH_GOODS = [
     "name": "Sony PlayStation 5 Slim 1TB Disc Китай",
     "price": 65990,
     "category": "Техника",
-    "views": 84,
-    "favorites": 1,
+    "views": 90,
+    "favorites": 2,
     "image": "images/goods/playstation-5-slim.webp",
     "price_from": true
   }
 ];
-window.GESH_PULSE = {"listed": 38, "views": 7572, "contacts": 308, "favorites": 667};
-window.GESH_GOODS_AT = "17.10.2026 11:00";
+window.GESH_PULSE = {"listed": 38, "views": 7627, "contacts": 309, "favorites": 672};
+window.GESH_GOODS_AT = "17.10.2026 18:00";
