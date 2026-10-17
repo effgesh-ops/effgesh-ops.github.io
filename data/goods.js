@@ -4,8 +4,8 @@ window.GESH_GOODS = [
     "name": "iPhone 17 Pro Max, 256 ГБ",
     "price": 94990,
     "category": "Смартфон",
-    "views": 737,
-    "favorites": 57,
+    "views": 733,
+    "favorites": 55,
     "image": "images/goods/iphone-17-pro-max.webp",
     "store_price": 129990,
     "store_where": "re:Store, та же версия с eSIM",
@@ -14,9 +14,9 @@ window.GESH_GOODS = [
   },
   {
     "name": "iPhone 17, 256 ГБ, eSIM",
-    "price": 74990,
+    "price": 74490,
     "category": "Смартфон",
-    "views": 344,
+    "views": 346,
     "favorites": 34,
     "image": "images/goods/iphone-17.webp",
     "store_price": 94990,
@@ -25,24 +25,13 @@ window.GESH_GOODS = [
   },
   {
     "name": "Sony PlayStation 5 Slim 1TB Disc Китай",
-    "price": 66990,
+    "price": 65990,
     "category": "Техника",
-    "views": 78,
+    "views": 84,
     "favorites": 1,
     "image": "images/goods/playstation-5-slim.webp",
     "price_from": true
-  },
-  {
-    "name": "Huawei Watch GT 6",
-    "price": 12990,
-    "category": "Носимое",
-    "views": 430,
-    "favorites": 30,
-    "image": "images/goods/huawei-watch-gt-6.webp",
-    "store_price": 20999,
-    "store_where": "М.Видео",
-    "store_at": "06.10.2026"
   }
 ];
-window.GESH_PULSE = {"listed": 38, "views": 7542, "contacts": 309, "favorites": 668};
-window.GESH_GOODS_AT = "16.10.2026 18:00";
+window.GESH_PULSE = {"listed": 38, "views": 7572, "contacts": 308, "favorites": 667};
+window.GESH_GOODS_AT = "17.10.2026 11:00";
