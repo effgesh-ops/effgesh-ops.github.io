@@ -16,7 +16,7 @@ window.GESH_GOODS = [
     "name": "iPhone 17, 256 ГБ, eSIM",
     "price": 73990,
     "category": "Смартфон",
-    "views": 350,
+    "views": 351,
     "favorites": 34,
     "image": "images/goods/iphone-17.webp",
     "store_price": 94990,
@@ -33,5 +33,5 @@ window.GESH_GOODS = [
     "price_from": true
   }
 ];
-window.GESH_PULSE = {"listed": 38, "views": 7677, "contacts": 309, "favorites": 674};
-window.GESH_GOODS_AT = "18.10.2026 11:00";
+window.GESH_PULSE = {"listed": 38, "views": 7706, "contacts": 309, "favorites": 680};
+window.GESH_GOODS_AT = "18.10.2026 18:00";
