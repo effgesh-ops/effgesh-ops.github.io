@@ -4,7 +4,7 @@ window.GESH_GOODS = [
     "name": "iPhone 17 Pro Max, 256 ГБ, eSIM",
     "price": 92990,
     "category": "Смартфон",
-    "views": 558,
+    "views": 566,
     "favorites": 52,
     "image": "images/goods/iphone-17-pro-max.webp",
     "store_price": 129990,
@@ -26,11 +26,11 @@ window.GESH_GOODS = [
     "name": "Европейская PlayStation 5 Slim Digital 825Gb",
     "price": 66990,
     "category": "Техника",
-    "views": 98,
-    "favorites": 8,
+    "views": 102,
+    "favorites": 10,
     "image": "images/goods/playstation-5-slim.webp",
     "price_from": true
   }
 ];
-window.GESH_PULSE = {"listed": 38, "views": 8135, "contacts": 320, "favorites": 717};
-window.GESH_GOODS_AT = "21.10.2026 18:00";
+window.GESH_PULSE = {"listed": 38, "views": 8220, "contacts": 327, "favorites": 725};
+window.GESH_GOODS_AT = "22.10.2026 11:00";
