@@ -26,11 +26,11 @@ window.GESH_GOODS = [
     "name": "Европейская PlayStation 5 Slim Digital 825Gb",
     "price": 63990,
     "category": "Техника",
-    "views": 206,
+    "views": 207,
     "favorites": 16,
     "image": "images/goods/playstation-5-slim.webp",
     "price_from": true
   }
 ];
-window.GESH_PULSE = {"listed": 41, "views": 10477, "contacts": 389, "favorites": 913};
-window.GESH_GOODS_AT = "01.11.2026 11:00";
+window.GESH_PULSE = {"listed": 41, "views": 10502, "contacts": 389, "favorites": 916};
+window.GESH_GOODS_AT = "01.11.2026 18:00";
