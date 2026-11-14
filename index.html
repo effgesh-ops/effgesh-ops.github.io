@@ -7,6 +7,8 @@
 <meta name="theme-color" content="#f6f2ee">
 <meta name="description" content="ГЕШ СТОР — персональный подбор техники. Находим модель, сравниваем цены у поставщиков, проверяем и привозим. Ижевск, Казань, доставка по всей России.">
 <title>Подбор техники дешевле магазина в Ижевске и Казани — ГЕШ СТОР</title>
+<link rel="preload" href="fonts/Onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Montserrat-var.woff" as="font" type="font/woff" crossorigin>
 <link rel="icon" href="images/brand/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="ГЕШ СТОР — подбор техники под ключ">
 <meta property="og:description" content="Найдём дешевле магазина, с чеком и гарантией. Ижевск, Казань, доставка по всей России.">
@@ -28,6 +30,7 @@
 <!-- Шрифты лежат рядом, в fonts/: страница не обращается к сторонним серверам,
      поэтому IP посетителя никуда, кроме нашего хостинга, не уходит -->
 <style>
+:focus-visible{outline:2px solid var(--violet);outline-offset:3px}
 @font-face{font-family:Onest;src:url(fonts/Onest-cyrillic.woff2) format('woff2');font-weight:100 900;font-display:swap;
   unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
 @font-face{font-family:Onest;src:url(fonts/Onest-latin.woff2) format('woff2');font-weight:100 900;font-display:swap;
@@ -132,7 +135,7 @@ nav{position:sticky;top:0;z-index:40;background:rgba(246,242,238,.9);
 .hero-tag small{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--graphite);margin-bottom:6px}
 .hero-tag b{font-size:22px;font-weight:500;letter-spacing:-.03em;color:var(--deep)}
 .hero-tag s{display:block;font-size:13px;color:var(--graphite);font-weight:300}
-.hero-tag em{display:inline-block;margin-top:8px;font-style:normal;font-size:13px;font-weight:600;color:#2f7a45;background:#e2f0e6;border-radius:999px;padding:3px 10px}
+.hero-tag em{display:inline-block;margin-top:8px;font-style:normal;font-size:13px;font-weight:600;color:#2b7040;background:#e2f0e6;border-radius:999px;padding:3px 10px}
 
 /* ===== КЕЙСЫ ===== */
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:34px}
@@ -148,9 +151,9 @@ nav{position:sticky;top:0;z-index:40;background:rgba(246,242,238,.9);
 .card:after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(246,242,238,0) 58%,rgba(246,242,238,.86) 82%)}
 .card{box-shadow:0 0 0 1px var(--line)}
 .card div{position:absolute;left:18px;right:16px;bottom:16px;z-index:2}
-.card h3{font-size:clamp(17px,1.6vw,22px)}
+.card h2{font-size:clamp(17px,1.6vw,22px)}
 .card p{margin:5px 0 0;font-size:13px;line-height:1.35;color:var(--text)}
-@media (max-width:760px){.cards{grid-template-columns:1fr 1fr;gap:10px}.card{border-radius:20px}.card div{left:12px;right:10px;bottom:11px}.card h3{font-size:15.5px}.card p{font-size:11.5px;margin-top:3px}}
+@media (max-width:760px){.cards{grid-template-columns:1fr 1fr;gap:10px}.card{border-radius:20px}.card div{left:12px;right:10px;bottom:11px}.card h2{font-size:15.5px}.card p{font-size:11.5px;margin-top:3px}}
 .perks{list-style:none;margin:0;padding:22px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .perks li{display:grid;grid-template-columns:52px 1fr;column-gap:14px;align-items:center}
 .perks img{grid-row:span 2;width:52px;height:52px;border-radius:50%;object-fit:cover}
@@ -177,7 +180,7 @@ nav{position:sticky;top:0;z-index:40;background:rgba(246,242,238,.9);
 .case-more summary::-webkit-details-marker{display:none}
 .case-more summary:after{content:" ▾"}.case-more[open] summary:after{content:" ▴"}
 .case-more .case-lead{margin-top:12px}
-.money .save{align-self:end;font-size:14px;font-weight:600;color:#2f7a45;background:#e2f0e6;border-radius:999px;padding:6px 12px}
+.money .save{align-self:end;font-size:14px;font-weight:600;color:#2b7040;background:#e2f0e6;border-radius:999px;padding:6px 12px}
 .all-cases{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
 .chip{font-size:13px;color:var(--deep);background:var(--lilac);padding:9px 15px;border-radius:999px}
@@ -186,7 +189,7 @@ nav{position:sticky;top:0;z-index:40;background:rgba(246,242,238,.9);
 .strip::-webkit-scrollbar{height:5px}
 .strip::-webkit-scrollbar-thumb{background:rgba(116,81,214,.3);border-radius:99px}
 .strip figure{margin:0;flex:0 0 auto;width:280px;scroll-snap-align:start}
-.strip img{width:100%;aspect-ratio:900/1440;object-fit:cover;object-position:50% 100%;border-radius:20px;
+.strip img{width:100%;height:auto;aspect-ratio:900/1440;object-fit:cover;object-position:50% 100%;border-radius:20px;
   border:1px solid var(--line);background:var(--lilac);box-shadow:0 26px 50px -30px rgba(43,23,72,.5)}
 .strip figcaption{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--graphite);margin-top:12px}
 .swap{animation:swap .5s ease}
@@ -195,7 +198,7 @@ nav{position:sticky;top:0;z-index:40;background:rgba(246,242,238,.9);
 /* ===== ЕСТЬ СЕЙЧАС: карточки с фото производителя ===== */
 .goods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .good{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column}
-.good img{width:100%;aspect-ratio:1;object-fit:contain;background:#fff;display:block}
+.good img{width:100%;height:auto;aspect-ratio:1;object-fit:contain;background:#fff;display:block}
 .good .ph{position:relative;background:#fff}
 .good .ph img{opacity:0;transition:opacity .5s}
 .good .ph.ok img{opacity:1}
@@ -353,7 +356,7 @@ nav{position:sticky;top:0;z-index:40;background:rgba(246,242,238,.9);
 .social h2{font-size:clamp(30px,3.6vw,52px)}
 footer{position:relative;z-index:1;background:var(--milk);border-top:1px solid var(--line);padding:56px 0 64px;color:var(--graphite);font-size:13.5px;line-height:1.7}
 .foot{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px}
-.foot h4{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
+.foot h3{font-family:inherit;line-height:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
   font-weight:600;margin:0 0 14px}
 .foot a{display:block;padding:3px 0;transition:color .2s}
 .foot a:hover{color:var(--violet)}
@@ -386,9 +389,15 @@ footer{position:relative;z-index:1;background:var(--milk);border-top:1px solid v
 .rise.in{opacity:1;transform:none}
 
 /* ===== «Куда написать»: один выбор для всех кнопок связи ===== */
-.sheet{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;
-  background:rgba(20,18,23,.42);opacity:0;pointer-events:none;transition:opacity .25s}
-.sheet{visibility:hidden}.sheet.on{opacity:1;pointer-events:auto;visibility:visible}
+/* Окна — встроенные <dialog>: закрываются кнопкой «назад» на телефоне и Esc, фокус не уходит под окно.
+   Сам <dialog> во весь экран и есть затемнение, поэтому стандартный фон окна убран. */
+dialog.sheet,dialog.lb{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;border:0;
+  box-sizing:border-box;color:inherit}
+dialog.sheet::backdrop,dialog.lb::backdrop{background:transparent;overflow:hidden;overscroll-behavior:contain}
+dialog.sheet:modal,dialog.lb:modal{overscroll-behavior:contain}
+.sheet{padding:0;align-items:center;justify-content:center;background:rgba(20,18,23,.42);opacity:0;transition:opacity .25s}
+.sheet[open]{display:flex}.sheet.on{opacity:1}
+@starting-style{.sheet.on{opacity:0}.sheet.on .sheet-box{transform:translateY(12px)}}
 .sheet-box{background:#fff;border-radius:28px;padding:26px;width:min(92vw,400px);box-shadow:0 30px 80px -30px rgba(43,23,72,.5);
   transform:translateY(12px);transition:transform .25s}
 .sheet.on .sheet-box{transform:none}
@@ -418,7 +427,7 @@ footer{position:relative;z-index:1;background:var(--milk);border-top:1px solid v
 
 /* ===== Отзывы: лента, которую листают пальцем ===== */
 .rv-wrap{position:relative}
-.rv-row{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 18px;scrollbar-width:none;scroll-behavior:smooth}
+.rv-row{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 18px;scrollbar-width:none}
 .rv-row::-webkit-scrollbar{display:none}
 .rv{flex:0 0 min(80vw,330px);scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:26px;
   overflow:hidden;display:flex;flex-direction:column}
@@ -450,8 +459,8 @@ footer{position:relative;z-index:1;background:var(--milk);border-top:1px solid v
 .lb-cap{position:absolute;left:0;right:0;bottom:16px;text-align:center;color:#ddd;font-size:13px}
 .lb-x{position:absolute;right:18px;top:14px;border:0;background:none;color:#fff;font-size:34px;cursor:pointer}
 .rv-more{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-.lb{position:fixed;inset:0;z-index:70;background:rgba(20,18,23,.9);display:none;align-items:center;justify-content:center;padding:20px}
-.lb.on{display:flex}.lb img,.lb video{max-width:100%;max-height:100%;border-radius:14px}
+.lb{background:rgba(20,18,23,.9);padding:20px;align-items:center;justify-content:center}
+.lb[open]{display:flex}.lb img,.lb video{max-width:100%;max-height:100%;border-radius:14px}
 
 /* ===== Частые вопросы ===== */
 .faq{display:grid;gap:10px;max-width:760px}
@@ -546,7 +555,7 @@ footer{position:relative;z-index:1;background:var(--milk);border-top:1px solid v
 <nav>
   <div class="wrap nav">
     <a class="logo" href="#top" aria-label="ГЕШ СТОР, наверх">
-      <img src="images/brand/logo.svg" alt="ГЕШ СТОР">
+      <img src="images/brand/logo.svg" alt="ГЕШ СТОР" width="2107" height="294">
     </a>
     <div class="navlinks">
       <a href="#cases">Кейсы</a><a href="#how">Как это работает</a><a href="#prices">Есть сейчас</a>
@@ -585,14 +594,14 @@ footer{position:relative;z-index:1;background:var(--milk);border-top:1px solid v
 <!-- ===== ОБЕЩАНИЯ ===== -->
 <div class="wrap promise">
   <div class="cards rise">
-    <div class="card"><img src="images/photos/owner.webp" alt="Евгений, ГЕШ СТОР" loading="lazy" style="object-position:50% 20%">
-      <div><h3>Лично</h3><p>Евгений ведёт каждый запрос</p></div></div>
-    <div class="card"><img src="images/photos/washer.webp" alt="Подбор бытовой техники" loading="lazy" style="object-position:60% 70%">
-      <div><h3>Под ключ</h3><p>Телефон, ноутбук, техника для дома</p></div></div>
-    <div class="card"><img src="images/photos/iphone.webp" alt="Новый iPhone с чеком и гарантией" loading="lazy" style="object-position:65% 60%">
-      <div><h3>Чек и гарантия</h3><p>Документы остаются у вас</p></div></div>
-    <div class="card"><img src="images/photos/courier.webp" alt="Доставка техники по России" loading="lazy" style="object-position:60% 35%">
-      <div><h3>По всей России</h3><p>Проверим и отправим СДЭК</p></div></div>
+    <div class="card"><img src="images/photos/owner.webp" alt="Евгений, ГЕШ СТОР" width="825" height="1024" loading="lazy" style="object-position:50% 20%">
+      <div><h2>Лично</h2><p>Евгений ведёт каждый запрос</p></div></div>
+    <div class="card"><img src="images/photos/washer.webp" alt="Подбор бытовой техники" width="600" height="745" loading="lazy" style="object-position:60% 70%">
+      <div><h2>Под ключ</h2><p>Телефон, ноутбук, техника для дома</p></div></div>
+    <div class="card"><img src="images/photos/iphone.webp" alt="Новый iPhone с чеком и гарантией" width="600" height="745" loading="lazy" style="object-position:65% 60%">
+      <div><h2>Чек и гарантия</h2><p>Документы остаются у вас</p></div></div>
+    <div class="card"><img src="images/photos/courier.webp" alt="Доставка техники по России" width="600" height="745" loading="lazy" style="object-position:60% 35%">
+      <div><h2>По всей России</h2><p>Проверим и отправим СДЭК</p></div></div>
   </div>
 </div>
 
@@ -749,12 +758,12 @@ footer{position:relative;z-index:1;background:var(--milk);border-top:1px solid v
     <div class="foot">
       <div>
         <a class="logo foot-logo" href="#top" aria-label="ГЕШ СТОР, наверх" style="margin-bottom:16px">
-          <img src="images/brand/logo.svg" alt="ГЕШ СТОР">
+          <img src="images/brand/logo.svg" alt="ГЕШ СТОР" width="2107" height="294">
         </a>
         <p style="margin:0">Сервис подбора техники.<br>Найдём · проверим · привезём.</p>
       </div>
       <div>
-        <h4>Связь</h4>
+        <h3>Связь</h3>
         <a href="https://t.me/evfgeniy" target="_blank" rel="noopener">Telegram — написать лично</a>
         <a href="https://vk.me/evgnybrv" target="_blank" rel="noopener">ВКонтакте — написать</a>
         <button type="button" data-contact="max" style="background:none;border:0;padding:3px 0;color:inherit;cursor:pointer;text-align:left;font:inherit">Max</button>
@@ -762,7 +771,7 @@ footer{position:relative;z-index:1;background:var(--milk);border-top:1px solid v
         <a href="https://t.me/GESH_STORE" target="_blank" rel="noopener">Отзывы клиентов</a>
       </div>
       <div>
-        <h4>География</h4>
+        <h3>География</h3>
         <p style="margin:0"><a href="izhevsk.html" style="display:inline">Ижевск</a> — курьер или самовывоз.<br>Казань — встречаемся лично.<br>По России — СДЭК.</p>
       </div>
     </div>
@@ -775,15 +784,15 @@ footer{position:relative;z-index:1;background:var(--milk);border-top:1px solid v
 
 <div class="copied-toast" id="toast" role="status" aria-live="polite"></div>
 <button class="float-tg" id="floatTg" type="button" data-write>Написать</button>
-<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+<dialog class="sheet" id="sheet" aria-labelledby="sheetTitle">
   <div class="sheet-box">
     <button class="sheet-x" type="button" id="sheetX" aria-label="Закрыть">×</button>
     <h3 id="sheetTitle">Куда написать?</h3>
     <p class="hint" id="sheetHint"></p>
     <div id="sheetList"></div>
   </div>
-</div>
-<div class="sheet" id="pd" role="dialog" aria-modal="true" aria-labelledby="pdName">
+</dialog>
+<dialog class="sheet" id="pd" aria-labelledby="pdName">
   <div class="sheet-box pd-box">
     <button class="sheet-x" type="button" id="pdX" aria-label="Закрыть">×</button>
     <img id="pdImg" alt="">
@@ -799,8 +808,8 @@ footer{position:relative;z-index:1;background:var(--milk);border-top:1px solid v
     <button class="pill pd-go" type="button" id="pdGo">Заказать</button>
     <p class="pd-note">Откроется переписка с готовым сообщением. Итоговую цену подтверждаем там.</p>
   </div>
-</div>
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Отзыв крупно"></div>
+</dialog>
+<dialog class="lb" id="lb" aria-label="Отзыв крупно"></dialog>
 <script src="data/cases.js"></script>
 <script src="images/brand/logo-live.js"></script>
 <script src="data/goods.js"></script>
@@ -970,7 +979,7 @@ function renderCase(i){
   $('caseMoney').style.display = money.length ? '' : 'none';
   $('caseLead').hidden = !$('caseLead').textContent;
   $('caseStrip').innerHTML = c.frames.map((f,n) => `
-    <figure><img src="${f}" alt="${c.tab} — кадр ${n+1}" loading="lazy">
+    <figure><img src="${f}" alt="${c.tab} — кадр ${n+1}" width="720" height="1280" loading="lazy">
       <figcaption>${FRAME_CAPS[n] || 'кадр ' + (n+1)}</figcaption></figure>`).join('');
   $('caseStrip').scrollTo({left:0, behavior: calm ? 'auto' : 'smooth'});
   const el = $('case');
@@ -1148,19 +1157,16 @@ function openSheet(text){
   $('sheetList').innerHTML = CONTACTS.map(c => c.url
     ? `<a class="ch c-${c.id}" href="${c.url}" target="_blank" rel="noopener"><i>${c.mark}</i><span>${c.name}<small>${c.note}</small></span></a>`
     : `<div class="ch c-${c.id} off"><i>${c.mark}</i><span>${c.name}<small>скоро появится</small></span></div>`).join('');
-  lastFocus = document.activeElement;
-  $('sheet').classList.add('on');
-  setTimeout(() => ($('sheetList').querySelector('a.ch') || $('sheetX')).focus(), 60);
+  showDlg($('sheet'), $('sheetList').querySelector('a.ch'));
 }
-let lastFocus = null;
-function closeSheet(){
-  if (!$('sheet').classList.contains('on')) return;
-  $('sheet').classList.remove('on');
-  if (lastFocus && lastFocus.focus) lastFocus.focus();
-}
-function closeLb(){ $('lb').classList.remove('on'); $('lb').innerHTML = ''; }
+/* Встроенное окно: Esc, «назад» на Android и возврат фокуса браузер делает сам. */
+/* Фокус ставим сами и без рамки: Safari рисует рамку у первой кнопки окна даже после касания пальцем. */
+function showDlg(d, target){ if (!d.open) d.showModal(); d.classList.add('on'); if (target) { target.blur(); target.focus({focusVisible: false}); } }
+['sheet', 'pd', 'lb'].forEach(id => $(id).addEventListener('close', e => e.target.classList.remove('on')));
+function closeSheet(){ if ($('sheet').open) $('sheet').close(); }
+function closeLb(){ if ($('lb').open) $('lb').close(); }
+$('lb').addEventListener('close', () => { $('lb').innerHTML = ''; });
 $('sheet').addEventListener('click', e => { if (e.target === $('sheet') || e.target.closest('#sheetX') || e.target.closest('a.ch')) closeSheet(); });
-addEventListener('keydown', e => { if (e.key === 'Escape') { closeSheet(); closeLb(); } });
 async function copyAndOpen(text){ await copyText(text); openSheet(text); }
 document.addEventListener('click', e => {
   const w = e.target.closest('[data-write]');
@@ -1184,7 +1190,7 @@ if (GOODS.length){
   const card = (g, i) => `
     <div class="good" data-i="${i}" role="button" tabindex="0" aria-label="${esc(g.name)} — подробнее">
       <div class="ph"><svg class="ld" viewBox="0 0 1000 1000" aria-hidden="true"><path fill="#7451D6" d="${MARK_O}"/><g transform="translate(503 500) scale(5.92)"><g class="lp"><path fill="#fff" transform="translate(-30.5 -31)" d="M1 62 C-2 30 22 4 60 0 C61 34 38 58 1 62Z"/></g></g></svg>
-      <img src="${g.image}" alt="${esc(g.name)}" loading="lazy" onload="this.parentNode.classList.add('ok')" onerror="this.parentNode.classList.add('ok');this.style.visibility='hidden'"></div>
+      <img src="${g.image}" alt="${esc(g.name)}" width="900" height="900" loading="lazy" onload="this.parentNode.classList.add('ok')" onerror="this.parentNode.classList.add('ok');this.style.visibility='hidden'"></div>
       <div class="gb">
         <span class="cat">${g.category}</span>
         <span class="nm">${esc(g.name)}</span>
@@ -1206,9 +1212,9 @@ if (GOODS.length){
     $('pdImg').src = g.image; $('pdImg').alt = g.name;
     $('pdCat').textContent = g.category; $('pdName').textContent = g.name;
     $('pdPr').innerHTML = (g.price_from ? '<small style="font-size:16px;color:var(--graphite)">от </small>' : '') + rub(g.price);
-    $('pd').classList.add('on'); $('pdGo').focus();
+    showDlg($('pd'), $('pdGo'));
   };
-  const closePd = () => { if (!$('pd').classList.contains('on')) return; $('pd').classList.remove('on'); pdFrom && pdFrom.focus(); };
+  const closePd = () => { if ($('pd').open) $('pd').close(); };
   $('goods').addEventListener('click', e => {
     const c = e.target.closest('.good[data-i]'); if (c) openPd(GOODS[+c.dataset.i], c);
   });
@@ -1217,7 +1223,6 @@ if (GOODS.length){
     if (c && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openPd(GOODS[+c.dataset.i], c); }
   });
   $('pd').addEventListener('click', e => { if (e.target === $('pd') || e.target.closest('#pdX')) closePd(); });
-  addEventListener('keydown', e => { if (e.key === 'Escape') closePd(); });
   $('pdGo').addEventListener('click', () => {
     const g = pdG; closePd();
     copyAndOpen(`Здравствуйте! Пишу с сайта.\nХочу заказать: ${g.name} — ${g.price_from ? 'от ' : ''}${rub(g.price)}.\nЕщё в наличии?`);
@@ -1244,7 +1249,7 @@ if (REVIEWS.length){
     const ph = r.video
       ? `<div class="rv-ph" data-i="${i}" role="button" tabindex="0" aria-label="Смотреть видео-отзыв"><video src="${r.video}" poster="${r.poster || ''}" muted loop playsinline preload="none"></video><span class="play">▶ видео</span></div>`
       : r.photos && r.photos.length
-      ? `<div class="rv-ph" data-i="${i}" role="button" tabindex="0" aria-label="Открыть фото крупно"><img src="${r.photos[0]}" alt="${esc(r.item)} — фото клиента" loading="lazy">${r.photos.length > 1 ? `<span class="cnt">1 / ${r.photos.length}</span>` : ''}</div>`
+      ? `<div class="rv-ph" data-i="${i}" role="button" tabindex="0" aria-label="Открыть фото крупно"><img src="${r.photos[0]}" alt="${esc(r.item)} — фото клиента" width="600" height="600" loading="lazy">${r.photos.length > 1 ? `<span class="cnt">1 / ${r.photos.length}</span>` : ''}</div>`
       : '';
     return `<article class="rv${ph ? '' : ' txt'}">${ph}<div class="rv-b">
       <span class="tag">${esc(r.item)}${r.city ? ' · ' + esc(r.city) : ''}</span>
@@ -1270,12 +1275,12 @@ if (REVIEWS.length){
   // стрелки на компьютере
   const row = $('revs'), step = () => row.firstElementChild.offsetWidth + 16;
   const arrows = () => { $('rvPrev').disabled = row.scrollLeft < 8; $('rvNext').disabled = row.scrollLeft + row.clientWidth > row.scrollWidth - 8; };
-  $('rvPrev').addEventListener('click', () => row.scrollBy({left:-step()}));
-  $('rvNext').addEventListener('click', () => row.scrollBy({left: step()}));
+  $('rvPrev').addEventListener('click', () => row.scrollBy({left:-step(), behavior: calm ? 'auto' : 'smooth'}));
+  $('rvNext').addEventListener('click', () => row.scrollBy({left: step(), behavior: calm ? 'auto' : 'smooth'}));
   // полоска-указатель: где вы в ленте; нажатие по полоске — перескок туда
   const bar = () => { const vis = row.clientWidth / row.scrollWidth, max = row.scrollWidth - row.clientWidth;
     $('rvThumb').style.width = (vis * 100) + '%'; $('rvThumb').style.left = (max ? row.scrollLeft / max * (1 - vis) * 100 : 0) + '%'; };
-  $('rvBar').addEventListener('click', e => { const r = $('rvBar').getBoundingClientRect(); row.scrollTo({left:(e.clientX - r.left) / r.width * (row.scrollWidth - row.clientWidth)}); });
+  $('rvBar').addEventListener('click', e => { const r = $('rvBar').getBoundingClientRect(); row.scrollTo({left:(e.clientX - r.left) / r.width * (row.scrollWidth - row.clientWidth), behavior: calm ? 'auto' : 'smooth'}); });
   row.addEventListener('scroll', () => { arrows(); bar(); }, {passive:true}); arrows(); bar();
   addEventListener('resize', bar);
   // мышкой ленту можно тянуть, как пальцем; короткий щелчок остаётся щелчком
@@ -1305,7 +1310,7 @@ if (REVIEWS.length){
     $('lb').innerHTML = '<button class="lb-x" type="button" aria-label="Закрыть">×</button>' + nav +
       (r.video ? `<video src="${r.video}" controls autoplay playsinline></video>` : `<img src="${items[k]}" alt="${esc(r.item)} — фото клиента">`) +
       `<div class="lb-cap">${esc(r.item)}${items.length > 1 ? ` · ${k + 1} / ${items.length}` : ''}</div>`;
-    $('lb').classList.add('on'); $('lb').querySelector('.lb-x').focus();
+    showDlg($('lb'), $('lb').querySelector('.lb-x'));
   }
   $('lb').addEventListener('click', e => {
     if (e.target.closest('.lb-nav')) { const n = lbR.photos.length; openLb(lbR, (lbK + (e.target.closest('.r') ? 1 : n - 1)) % n); return; }
