@@ -11,4 +11,4 @@ window.GESH_GOODS = [
   }
 ];
 window.GESH_PULSE = {"listed": 44, "views": 12842, "contacts": 462, "favorites": 1116};
-window.GESH_GOODS_AT = "18.11.2026 18:00";
+window.GESH_GOODS_AT = "19.11.2026 11:00";
