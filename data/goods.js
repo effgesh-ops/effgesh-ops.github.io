@@ -1,14 +1,13 @@
 /* Собрано tools/site_goods.py — руками не править. */
 window.GESH_GOODS = [
   {
-    "name": "Европейская PlayStation 5 Slim Digital 825Gb",
-    "price": 68990,
+    "name": "Playstation 5 Slim Disk",
+    "price": 74990,
     "category": "Техника",
-    "views": 742,
-    "favorites": 67,
-    "image": "images/goods/playstation-5-slim.webp",
-    "price_from": true
+    "views": 394,
+    "favorites": 33,
+    "image": "images/goods/playstation-5-slim.webp"
   }
 ];
-window.GESH_PULSE = {"listed": 44, "views": 13463, "contacts": 489, "favorites": 1174};
-window.GESH_GOODS_AT = "21.11.2026 18:00";
+window.GESH_PULSE = {"listed": 44, "views": 13543, "contacts": 493, "favorites": 1188};
+window.GESH_GOODS_AT = "22.11.2026 11:00";
