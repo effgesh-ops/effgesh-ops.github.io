@@ -1,4 +1,4 @@
 /* Собрано tools/site_goods.py — руками не править. */
 window.GESH_GOODS = [];
-window.GESH_PULSE = {"listed": 44, "views": 13928, "contacts": 505, "favorites": 1225};
-window.GESH_GOODS_AT = "28.11.2026 11:00";
+window.GESH_PULSE = {"listed": 44, "views": 13952, "contacts": 506, "favorites": 1228};
+window.GESH_GOODS_AT = "28.11.2026 18:00";
